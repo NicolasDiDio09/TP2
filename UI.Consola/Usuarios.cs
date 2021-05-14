@@ -46,14 +46,21 @@ namespace UI.Consola
 
         }
 
-        public List<Usuario> ListadoGeneral()
+        public void ListadoGeneral()
         {
+            Console.Clear();
             List<Usuario> lista = UsuarioNegocio.GetAll();
-            return lista;
+            foreach (Usuario usr in lista)
+            {
+                MostrarDatos(usr);
+            }
+                
+            
+            
         }
 
         
-        public void mostrarDatos(Usuario usr)
+        public void MostrarDatos(Usuario usr)
         {
             Console.WriteLine("usuario: {0}", usr.ID);
             Console.WriteLine("\t\t nombre:{0}", usr.Nombre);
@@ -67,6 +74,8 @@ namespace UI.Consola
              
 
         }
+
+
 
 
 

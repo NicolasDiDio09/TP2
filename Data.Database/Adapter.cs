@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
-
 namespace Data.Database
 {
     public class Adapter
