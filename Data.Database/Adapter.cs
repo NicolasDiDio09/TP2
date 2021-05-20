@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Data.SqlClient;
+using System.Text;
+
 namespace Data.Database
 {
     public class Adapter

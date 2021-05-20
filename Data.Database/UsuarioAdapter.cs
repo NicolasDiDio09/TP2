@@ -1,15 +1,15 @@
-Ôªøusing System;
+using Business.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Business.Entities;
 
 namespace Data.Database
 {
     public class UsuarioAdapter : Adapter
     {
         #region DatosEnMemoria
-        // Esta regi√≥n solo se usa en esta etapa donde los datos se mantienen en memoria.
-        // Al modificar este proyecto para que acceda a la base de datos esta ser√° eliminada
+        // Esta regiÛn solo se usa en esta etapa donde los datos se mantienen en memoria.
+        // Al modificar este proyecto para que acceda a la base de datos esta ser· eliminada
         private static List<Usuario> _Usuarios;
 
         private static List<Usuario> Usuarios
