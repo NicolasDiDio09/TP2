@@ -10,19 +10,5 @@ namespace Business.Logic
 {
     public class BusinessLogic
     {
-        private UsuarioAdapter _UsuarioData;
-
-        public UsuarioAdapter UsuarioData
-        {
-            get 
-            {
-                return _UsuarioData;
-            }
-            set 
-            {
-                _UsuarioData = value;
-            }
-        }
-
     }
 }

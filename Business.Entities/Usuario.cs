@@ -82,12 +82,5 @@ namespace Business.Entities
                 _Habilitado = value;
             }
         }
-
-
-
-
-
-
-
     }
 }

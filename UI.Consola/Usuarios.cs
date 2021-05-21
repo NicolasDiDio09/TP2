@@ -10,26 +10,24 @@ namespace UI.Consola
 {
     public class Usuarios
     {
-        private UsuarioLogic _usuarioNegocio;
-
-
-        public UsuarioLogic UsuarioNegocio
+        private Business.Logic.UsuarioLogic _UsuarioNegocio;
+        public Business.Logic.UsuarioLogic UsuarioNegocio
         {
-            get
-            {
-                return _usuarioNegocio;
+            get 
+            { 
+                return _UsuarioNegocio; 
             }
-            set
-            {
-                _usuarioNegocio = value;
+            set 
+            { 
+                _UsuarioNegocio = value; 
             }
         }
 
         public Usuarios()
         {
-            
-       
+            UsuarioNegocio = new UsuarioLogic();
         }
+
         public void Menu()
         {
             
@@ -40,13 +38,67 @@ namespace UI.Consola
             Console.WriteLine("5- Eliminar");
             Console.WriteLine("6- Salir");
 
-            ListadoGeneral();
+            ConsoleKeyInfo op = Console.ReadKey();
+
+            switch (op.Key)
+            {
+                case ConsoleKey.D1:
+                    ListadoGeneral();
+                    break;
+                case ConsoleKey.D2:
+                    Consultar();
+                    break;
+                case ConsoleKey.D4:
+                    Modificar();
+                    break;
+            }
+            
+        }
+
+        public void Modificar()
+        {
+            try
+            {
+                Console.Clear();
+                Console.Write("Ingrese la ID del usuario a modificar");
+                int id = int.Parse(Console.ReadLine());
+                Usuario user = UsuarioNegocio.GetOne(id);
+                Console.Write("Ingrese Nombre:");
+                user.Nombre = Console.ReadLine();
+                Console.Write("Ingrese Apellido:");
+                user.Apellido = Console.ReadLine();
+                Console.Write("Ingrese Nombre de Usuario:");
+                user.NombreUsuario = Console.ReadLine();
+                Console.Write("Ingrese Clave:");
+                user.Clave = Console.ReadLine();
+                Console.Write("Ingrese Email:");
+                user.Email = Console.ReadLine();
+                Console.Write("Ingrese Habilitacion de Usuario (1-Si/otro- No):");
+                user.Habilitado = (Console.ReadLine() == "1");
+                user.State = BusinessEntity.States.Modified;
+                UsuarioNegocio.Save(user);
+            }
+            catch(FormatException fe)
+            {
+                Console.WriteLine();
+                Console.WriteLine("La ID ingresadad debe ser un numero");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine();
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey();
+            }
+
         }
 
         public void ListadoGeneral()
         {
             Console.Clear();
-            
             foreach (Usuario usr in UsuarioNegocio.GetAll())
             {
                 MostrarDatos(usr);
@@ -55,11 +107,28 @@ namespace UI.Consola
 
         public void Consultar()
         {
-            Console.Clear();
-            Console.Write("Ingre el ID del usuario a consultar:");
-            int ID = int.Parse(Console.ReadLine());
-            this.MostrarDatos(UsuarioNegocio.GetOne(ID));
-            
+            try
+            {
+                Console.Clear();
+                Console.Write("Ingre el ID del usuario a consultar:");
+                int ID = int.Parse(Console.ReadLine());
+                this.MostrarDatos(UsuarioNegocio.GetOne(ID));
+            }
+            catch(FormatException fe)
+            {
+                Console.WriteLine();
+                Console.WriteLine("La ID ingresada debe ser un numero");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine();
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey();
+            }
         }
         
         public void MostrarDatos(Usuario usr)
@@ -72,7 +141,6 @@ namespace UI.Consola
             Console.WriteLine("\t\t email:{0}", usr.Email);
             Console.WriteLine("\t\t habilitado:{0}", usr.Habilitado);
             Console.WriteLine("");
-            Console.ReadLine();
             // "\t" ES UN TAB en un string
         }
 
