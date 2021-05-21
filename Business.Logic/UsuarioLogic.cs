@@ -10,15 +10,8 @@ namespace Business.Logic
 {
     public class UsuarioLogic :BusinessLogic
     {
-        private Data.Database.UsuarioAdapter _UsuarioData;
-        public Data.Database.UsuarioAdapter UsuarioData
-        {
-            get { return _UsuarioData; }
-            set { _UsuarioData = value; }
-        }
         public UsuarioLogic() 
         {
-            UsuarioData = new UsuarioAdapter();
         }
 
         public List<Usuario> GetAll()
