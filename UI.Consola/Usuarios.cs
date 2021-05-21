@@ -32,33 +32,35 @@ namespace UI.Consola
         }
         public void Menu()
         {
+            
             Console.WriteLine("1– Listado General");
             Console.WriteLine("2– Consulta");
             Console.WriteLine("3– Agregar");
-            Console.WriteLine("4 - Modificar");
-            Console.WriteLine("5 - Eliminar");
-            Console.WriteLine("6 - Salir");
-            
+            Console.WriteLine("4- Modificar");
+            Console.WriteLine("5- Eliminar");
+            Console.WriteLine("6- Salir");
 
-
-
-
-
+            ListadoGeneral();
         }
 
         public void ListadoGeneral()
         {
             Console.Clear();
-            List<Usuario> lista = UsuarioNegocio.GetAll();
-            foreach (Usuario usr in lista)
+            
+            foreach (Usuario usr in UsuarioNegocio.GetAll())
             {
                 MostrarDatos(usr);
             }
-                
-            
-            
         }
 
+        public void Consultar()
+        {
+            Console.Clear();
+            Console.Write("Ingre el ID del usuario a consultar:");
+            int ID = int.Parse(Console.ReadLine());
+            this.MostrarDatos(UsuarioNegocio.GetOne(ID));
+            
+        }
         
         public void MostrarDatos(Usuario usr)
         {
@@ -70,9 +72,8 @@ namespace UI.Consola
             Console.WriteLine("\t\t email:{0}", usr.Email);
             Console.WriteLine("\t\t habilitado:{0}", usr.Habilitado);
             Console.WriteLine("");
+            Console.ReadLine();
             // "\t" ES UN TAB en un string
-             
-
         }
 
 
