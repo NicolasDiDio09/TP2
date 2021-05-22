@@ -48,8 +48,17 @@ namespace UI.Consola
                 case ConsoleKey.D2:
                     Consultar();
                     break;
+                case ConsoleKey.D3:
+                    Agregar();
+                    break;
                 case ConsoleKey.D4:
                     Modificar();
+                    break;
+                case ConsoleKey.D5:
+                    Eliminar();
+                    break;
+                case ConsoleKey.D6:
+                    Salir();
                     break;
             }
             
@@ -143,14 +152,61 @@ namespace UI.Consola
             Console.WriteLine("");
             // "\t" ES UN TAB en un string
         }
+        public void Agregar()
+        {
+            Usuario usuario = new Usuario();
 
+            Console.Clear();
+            Console.Write("Ingrese Nombre: ");
+            usuario.Nombre = Console.ReadLine();
+            Console.Write("Ingrese Apellido: ");
+            usuario.Apellido = Console.ReadLine();
+            Console.Write("Ingrese Nombre de Usuario: ");
+            usuario.NombreUsuario = Console.ReadLine();
+            Console.Write("Ingrese Clave: ");
+            usuario.Clave = Console.ReadLine();
+            Console.Write("Ingrese Email: ");
+            usuario.Email = Console.ReadLine();
+            Console.Write("Ingrese Habilitacion de Usuario (1-Si/Otro-No): ");
+            usuario.Habilitado = (Console.ReadLine()=="1");
+            usuario.State = BusinessEntity.States.New;
+            UsuarioNegocio.Save(usuario);
+            Console.WriteLine();
+            Console.WriteLine("ID: {0}",usuario.ID);
 
+        }
 
+        public void Eliminar()
+        {
+            try
+            {
+                Console.Clear();
+                Console.Write("Ingrese el ID del usuario a eliminar: ");
+                int ID = int.Parse(Console.ReadLine());
+                UsuarioNegocio.Delete(ID);
+            }
+            catch (FormatException fe)
+            {
+                Console.WriteLine();
+                Console.WriteLine("La ID ingresada debe ser un número entero ");
+            }
 
-
-
-
-
+            catch (Exception e)
+            {
+                Console.WriteLine();
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+            }
+        }
+        public void Salir()
+        {
+            Console.WriteLine("oki doki");
+            Console.ReadKey();
+        }
 
     }
 }
