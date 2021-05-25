@@ -30,38 +30,49 @@ namespace UI.Consola
 
         public void Menu()
         {
-            
-            Console.WriteLine("1– Listado General");
-            Console.WriteLine("2– Consulta");
-            Console.WriteLine("3– Agregar");
-            Console.WriteLine("4- Modificar");
-            Console.WriteLine("5- Eliminar");
-            Console.WriteLine("6- Salir");
-
-            ConsoleKeyInfo op = Console.ReadKey();
-
-            switch (op.Key)
+            bool romperwhile = false;
+            do
             {
-                case ConsoleKey.D1:
-                    ListadoGeneral();
-                    break;
-                case ConsoleKey.D2:
-                    Consultar();
-                    break;
-                case ConsoleKey.D3:
-                    Agregar();
-                    break;
-                case ConsoleKey.D4:
-                    Modificar();
-                    break;
-                case ConsoleKey.D5:
-                    Eliminar();
-                    break;
-                case ConsoleKey.D6:
-                    Salir();
-                    break;
-            }
-            
+                Console.WriteLine("1– Listado General");
+                Console.WriteLine("2– Consulta");
+                Console.WriteLine("3– Agregar");
+                Console.WriteLine("4- Modificar");
+                Console.WriteLine("5- Eliminar");
+                Console.WriteLine("6- Salir");
+
+                try
+                {
+                    ConsoleKeyInfo op = Console.ReadKey();
+                    Console.Clear();
+                    switch (op.Key)
+                    {
+                        case ConsoleKey.D1:
+                            ListadoGeneral();
+                            break;
+                        case ConsoleKey.D2:
+                            Consultar();
+                            break;
+                        case ConsoleKey.D3:
+                            Agregar();
+                            break;
+                        case ConsoleKey.D4:
+                            Modificar();
+                            break;
+                        case ConsoleKey.D5:
+                            Eliminar();
+                            break;
+                        case ConsoleKey.D6:
+                            romperwhile = true;
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine(e.Message);
+                }
+
+            } while (romperwhile == false);
         }
 
         public void Modificar()
@@ -69,7 +80,7 @@ namespace UI.Consola
             try
             {
                 Console.Clear();
-                Console.Write("Ingrese la ID del usuario a modificar");
+                Console.Write("Ingrese la ID del usuario a modificar:");
                 int id = int.Parse(Console.ReadLine());
                 Usuario user = UsuarioNegocio.GetOne(id);
                 Console.Write("Ingrese Nombre:");
@@ -101,17 +112,22 @@ namespace UI.Consola
             {
                 Console.WriteLine("Presione una tecla para continuar...");
                 Console.ReadKey();
+                Console.Clear();
             }
 
         }
 
         public void ListadoGeneral()
         {
-            Console.Clear();
+           
             foreach (Usuario usr in UsuarioNegocio.GetAll())
             {
                 MostrarDatos(usr);
             }
+
+            Console.WriteLine("Pulse una tecla para continuar");
+            Console.ReadKey();
+            Console.Clear();
         }
 
         public void Consultar()
@@ -137,6 +153,7 @@ namespace UI.Consola
             {
                 Console.WriteLine("Presione una tecla para continuar...");
                 Console.ReadKey();
+                Console.Clear();
             }
         }
         
@@ -174,6 +191,10 @@ namespace UI.Consola
             Console.WriteLine();
             Console.WriteLine("ID: {0}",usuario.ID);
 
+            Console.WriteLine("Pulse una tecla para continuar");
+            Console.ReadKey();
+            Console.Clear();
+
         }
 
         public void Eliminar()
@@ -200,13 +221,8 @@ namespace UI.Consola
             {
                 Console.WriteLine("Presione una tecla para continuar");
                 Console.ReadKey();
+                Console.Clear();
             }
         }
-        public void Salir()
-        {
-            Console.WriteLine("oki doki");
-            Console.ReadKey();
-        }
-
     }
 }
