@@ -64,6 +64,25 @@ namespace UI.Consola
                         case ConsoleKey.D6:
                             romperwhile = true;
                             break;
+                               // Para hacerlo con el numpad c:
+                        case ConsoleKey.NumPad1:
+                            ListadoGeneral();
+                            break;
+                        case ConsoleKey.NumPad2:
+                            Consultar();
+                            break;
+                        case ConsoleKey.NumPad3:
+                            Agregar();
+                            break;
+                        case ConsoleKey.NumPad4:
+                            Modificar();
+                            break;
+                        case ConsoleKey.NumPad5:
+                            Eliminar();
+                            break;
+                        case ConsoleKey.NumPad6:
+                            romperwhile = true;
+                            break;
                     }
                 }
                 catch (Exception e)
