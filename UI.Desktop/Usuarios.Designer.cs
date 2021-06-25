@@ -90,7 +90,7 @@ namespace UI.Desktop
             this.tsbEliminar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(23, 20);
+            this.tsbEliminar.Size = new System.Drawing.Size(314, 152);
             this.tsbEliminar.Text = "toolStripButton1";
             this.tsbEliminar.ToolTipText = "Eliminar";
             // 
