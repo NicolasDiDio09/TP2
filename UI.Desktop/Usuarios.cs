@@ -27,17 +27,41 @@ namespace UI.Desktop
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
-            Listar();
+            this.Listar();
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            Listar();
+            this.Listar();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            UsuarioDesktop ud = new UsuarioDesktop(ModoForm.Alta);
+            ud.ShowDialog();
+            Listar();
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            int id = ((Business.Entities.Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
+            UsuarioDesktop us = new UsuarioDesktop(id, ModoForm.Modicacion);
+            us.ShowDialog();
+            Listar();
+
+        }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            int id = ((Business.Entities.Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
+            UsuarioDesktop us = new UsuarioDesktop(id, ModoForm.Baja);
+            us.ShowDialog();
+            Listar();
         }
     }
 }
