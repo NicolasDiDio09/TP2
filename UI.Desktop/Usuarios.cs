@@ -21,8 +21,17 @@ namespace UI.Desktop
         }
         public void Listar()
         {
-            UsuarioLogic ul = new UsuarioLogic();
-            this.dgvUsuarios.DataSource = ul.GetAll();
+            try
+            {
+                UsuarioLogic ul = new UsuarioLogic();
+                this.dgvUsuarios.DataSource = ul.GetAll();
+            }
+            catch(FormatException fe)
+            {
+                MessageBox.Show("Error al recuperar la lista de usuarios");
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", fe);
+                throw ExcepcionManejada;
+            }
         }
 
         private void Usuarios_Load(object sender, EventArgs e)

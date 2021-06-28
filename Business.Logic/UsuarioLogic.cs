@@ -28,8 +28,8 @@ namespace Business.Logic
 
         public List<Usuario> GetAll()
         {
-            return UsuarioData.GetAll();
-
+                return UsuarioData.GetAll();
+         
         }
 
         public void Save(Business.Entities.Usuario User)
