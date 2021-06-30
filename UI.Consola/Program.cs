@@ -8,7 +8,7 @@ namespace UI.Consola
         {
             new Usuarios().Menu();
 
-            new Materias().Menu();
+            //new Materias().Menu();
         }
     }
 }
