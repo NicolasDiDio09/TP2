@@ -11,11 +11,11 @@ namespace Data.Database
 {
     public class MateriasAdapter : Adapter
     {
-        private static List<Materias> Materia;
+        private static List<Materia> Materia;
 
-        public List<Materias> GetAll()
+        public List<Materia> GetAll()
         {
-            List<Materias> materias = new List<Materias>();
+            List<Materia> materias = new List<Materia>();
             try
             {
                 this.OpenConnection();
@@ -23,7 +23,7 @@ namespace Data.Database
                 SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
                 while (drMaterias.Read())
                 {
-                    Materias mat = new Materias();
+                    Materia mat = new Materia();
                     mat.ID = (int)drMaterias["id_materia"];
                     mat.DescMateria = (string)drMaterias["desc_materia"];
                     mat.HSSemanales = (int)drMaterias["hs_semanales"];
@@ -44,9 +44,9 @@ namespace Data.Database
             return materias;
         }
 
-        public Materias GetOne(int ID)
+        public Materia GetOne(int ID)
         {
-            Materias mat = new Materias();
+            Materia mat = new Materia();
             try
             {
                 this.OpenConnection();
@@ -73,7 +73,7 @@ namespace Data.Database
             }
             return mat;
         }
-        protected void Update(Materias materia)
+        protected void Update(Materia materia)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
-        protected void Insert(Materias materia)
+        protected void Insert(Materia materia)
         {
             try
             {
@@ -141,7 +141,7 @@ namespace Data.Database
             }
         }
 
-        public void Save(Materias materia)
+        public void Save(Materia materia)
         {
             if (materia.State == BusinessEntity.States.Deleted)
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    public class Materias : BusinessEntity
+    public class Materia : BusinessEntity
     {
         public string DescMateria { get; set; }
 

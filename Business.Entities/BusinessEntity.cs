@@ -24,9 +24,6 @@ namespace Business.Entities
         public BusinessEntity()
         {
             this.State = States.New;
-
-
-
         }
         private int _ID;
         public int ID 
