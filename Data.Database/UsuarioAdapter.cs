@@ -162,8 +162,7 @@ namespace Data.Database
                 this.OpenConnection();
 
                 //creamos la sentencia sql y asignamos un valor al parámetro
-                SqlCommand cmdDelete =
-                    new SqlCommand("delete usuarios where id_usuario=@id", sqlConn);
+                SqlCommand cmdDelete = new SqlCommand("delete usuarios where id_usuario=@id", sqlConn);
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)

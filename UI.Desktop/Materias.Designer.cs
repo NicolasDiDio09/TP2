@@ -37,6 +37,7 @@ namespace UI.Desktop
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hsSemanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hsTotales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -57,11 +58,11 @@ namespace UI.Desktop
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(450, 425);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(551, 425);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(450, 450);
+            this.toolStripContainer1.Size = new System.Drawing.Size(551, 450);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -83,7 +84,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(450, 425);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(551, 425);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dgvMaterias
@@ -95,44 +96,58 @@ namespace UI.Desktop
             this.id,
             this.descripcion,
             this.hsSemanales,
-            this.hsTotales});
+            this.hsTotales,
+            this.id_plan});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvMaterias, 2);
             this.dgvMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMaterias.Location = new System.Drawing.Point(3, 3);
+            this.dgvMaterias.MultiSelect = false;
             this.dgvMaterias.Name = "dgvMaterias";
             this.dgvMaterias.ReadOnly = true;
             this.dgvMaterias.RowTemplate.Height = 25;
-            this.dgvMaterias.Size = new System.Drawing.Size(444, 390);
+            this.dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMaterias.Size = new System.Drawing.Size(545, 390);
             this.dgvMaterias.TabIndex = 0;
             // 
             // id
             // 
+            this.id.DataPropertyName = "ID";
             this.id.HeaderText = "ID";
             this.id.Name = "id";
             this.id.ReadOnly = true;
             // 
             // descripcion
             // 
+            this.descripcion.DataPropertyName = "DescMateria";
             this.descripcion.HeaderText = "Descripcion";
             this.descripcion.Name = "descripcion";
             this.descripcion.ReadOnly = true;
             // 
             // hsSemanales
             // 
+            this.hsSemanales.DataPropertyName = "HSSemanales";
             this.hsSemanales.HeaderText = "Horas Semanales";
             this.hsSemanales.Name = "hsSemanales";
             this.hsSemanales.ReadOnly = true;
             // 
             // hsTotales
             // 
+            this.hsTotales.DataPropertyName = "HSTotales";
             this.hsTotales.HeaderText = "Horas Totales";
             this.hsTotales.Name = "hsTotales";
             this.hsTotales.ReadOnly = true;
             // 
+            // id_plan
+            // 
+            this.id_plan.DataPropertyName = "IDPlan";
+            this.id_plan.HeaderText = "ID Plan";
+            this.id_plan.Name = "id_plan";
+            this.id_plan.ReadOnly = true;
+            // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(291, 399);
+            this.btnActualizar.Location = new System.Drawing.Point(392, 399);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -142,7 +157,7 @@ namespace UI.Desktop
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(372, 399);
+            this.btnSalir.Location = new System.Drawing.Point(473, 399);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -159,7 +174,7 @@ namespace UI.Desktop
             this.tsbEliminar});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(112, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(81, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // tsbNuevo
@@ -199,7 +214,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 450);
+            this.ClientSize = new System.Drawing.Size(551, 450);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "Materias";
             this.Text = "Materias";
@@ -232,5 +247,6 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn hsSemanales;
         private System.Windows.Forms.DataGridViewTextBoxColumn hsTotales;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_plan;
     }
 }

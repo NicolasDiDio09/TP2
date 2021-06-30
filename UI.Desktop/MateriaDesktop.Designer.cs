@@ -35,11 +35,13 @@ namespace UI.Desktop
             this.label2 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtHSTotales = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtHSSemanales = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtHSTotales = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtIDPlan = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,25 +57,28 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtID, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtHSTotales, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtHSSemanales, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox4, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtHSTotales, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtIDPlan, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(603, 123);
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(603, 180);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDescripcion.Location = new System.Drawing.Point(81, 46);
+            this.txtDescripcion.Location = new System.Drawing.Point(81, 48);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(205, 23);
             this.txtDescripcion.TabIndex = 4;
@@ -90,7 +95,7 @@ namespace UI.Desktop
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 43);
+            this.label2.Location = new System.Drawing.Point(3, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 15);
             this.label2.TabIndex = 1;
@@ -114,14 +119,14 @@ namespace UI.Desktop
             this.label3.TabIndex = 2;
             this.label3.Text = "Horas semanales";
             // 
-            // txtHSTotales
+            // label4
             // 
-            this.txtHSTotales.AutoSize = true;
-            this.txtHSTotales.Location = new System.Drawing.Point(292, 43);
-            this.txtHSTotales.Name = "txtHSTotales";
-            this.txtHSTotales.Size = new System.Drawing.Size(76, 15);
-            this.txtHSTotales.TabIndex = 5;
-            this.txtHSTotales.Text = "Horas totales";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(292, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 15);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Horas totales";
             // 
             // txtHSSemanales
             // 
@@ -131,17 +136,17 @@ namespace UI.Desktop
             this.txtHSSemanales.Size = new System.Drawing.Size(206, 23);
             this.txtHSSemanales.TabIndex = 6;
             // 
-            // textBox4
+            // txtHSTotales
             // 
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox4.Location = new System.Drawing.Point(394, 46);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(206, 23);
-            this.textBox4.TabIndex = 7;
+            this.txtHSTotales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtHSTotales.Location = new System.Drawing.Point(394, 48);
+            this.txtHSTotales.Name = "txtHSTotales";
+            this.txtHSTotales.Size = new System.Drawing.Size(206, 23);
+            this.txtHSTotales.TabIndex = 7;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(292, 89);
+            this.btnAceptar.Location = new System.Drawing.Point(292, 138);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 8;
@@ -151,7 +156,7 @@ namespace UI.Desktop
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(394, 89);
+            this.btnCancelar.Location = new System.Drawing.Point(394, 138);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 9;
@@ -159,11 +164,28 @@ namespace UI.Desktop
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(292, 90);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 15);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "ID plan";
+            // 
+            // txtIDPlan
+            // 
+            this.txtIDPlan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtIDPlan.Location = new System.Drawing.Point(394, 93);
+            this.txtIDPlan.Name = "txtIDPlan";
+            this.txtIDPlan.Size = new System.Drawing.Size(206, 23);
+            this.txtIDPlan.TabIndex = 11;
+            // 
             // MateriaDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 123);
+            this.ClientSize = new System.Drawing.Size(603, 180);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MateriaDesktop";
             this.Text = "MateriaDesktop";
@@ -181,10 +203,12 @@ namespace UI.Desktop
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label txtHSTotales;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtHSSemanales;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtHSTotales;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtIDPlan;
     }
 }

@@ -97,6 +97,8 @@ namespace UI.Consola
                 mater.HSSemanales = int.Parse(Console.ReadLine());
                 Console.Write("Ingrese cantidad de horas totales:");
                 mater.HSTotales = int.Parse(Console.ReadLine());
+                Console.Write("Ingrese el id del plan:");
+                mater.IDPlan = int.Parse(Console.ReadLine());
                 mater.State = BusinessEntity.States.Modified;
                 MateriaNegocio.Save(mater);
             }
@@ -165,6 +167,7 @@ namespace UI.Consola
             Console.WriteLine("\t\t Descripcion:{0}", mat.DescMateria);
             Console.WriteLine("\t\t Horas semanales:{0}", mat.HSSemanales);
             Console.WriteLine("\t\t Horas totales:{0}", mat.HSTotales);
+            Console.WriteLine("\t\t Id plan:{0}", mat.IDPlan);
             Console.WriteLine("");
             // "\t" ES UN TAB en un string
         }
@@ -179,7 +182,9 @@ namespace UI.Consola
             mat.HSSemanales = int.Parse(Console.ReadLine());
             Console.Write("Ingrese cantidad de horas totales: ");
             mat.HSTotales = int.Parse(Console.ReadLine());
-            
+            Console.Write("Ingrese id plan: ");
+            mat.IDPlan = int.Parse(Console.ReadLine());
+
             mat.State = BusinessEntity.States.New;
             MateriaNegocio.Save(mat);
             Console.WriteLine();

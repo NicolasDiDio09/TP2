@@ -11,7 +11,36 @@ namespace Data.Database
 {
     public class MateriasAdapter : Adapter
     {
-        private static List<Materia> Materia;
+        private static List<Materia> _Materias;
+
+        private static List<Materia> Materias
+        {
+            get
+            {
+                if (_Materias == null)
+                {
+                    _Materias = new List<Business.Entities.Materia>();
+                    Business.Entities.Materia mater;
+                    mater = new Business.Entities.Materia();
+                    mater.ID = 1;
+                    mater.State = Business.Entities.BusinessEntity.States.Unmodified;
+                    mater.DescMateria= ".Net";
+                    mater.HSSemanales= 4;
+                    mater.HSTotales = 144;
+                    _Materias.Add(mater);
+
+                    mater = new Business.Entities.Materia();
+                    mater.ID = 2;
+                    mater.State = Business.Entities.BusinessEntity.States.Unmodified;
+                    mater.DescMateria = "Algoritmo";
+                    mater.HSSemanales = 4;
+                    mater.HSTotales = 144;
+                    _Materias.Add(mater);
+
+                }
+                return _Materias;
+            }
+        }
 
         public List<Materia> GetAll()
         {
@@ -28,6 +57,7 @@ namespace Data.Database
                     mat.DescMateria = (string)drMaterias["desc_materia"];
                     mat.HSSemanales = (int)drMaterias["hs_semanales"];
                     mat.HSTotales = (int)drMaterias["hs_totales"];
+                    mat.IDPlan = (int)drMaterias["id_plan"];
                     materias.Add(mat);
                 }
                 drMaterias.Close();
@@ -59,6 +89,7 @@ namespace Data.Database
                     mat.DescMateria = (string)drMaterias["desc_materia"];
                     mat.HSSemanales = (int)drMaterias["hs_semanales"];
                     mat.HSTotales = (int)drMaterias["hs_totales"];
+                    mat.IDPlan = (int)drMaterias["id_plan"];
                 }
                 drMaterias.Close();
             }
@@ -78,11 +109,12 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE materias SET desc_materia=@desc_materia, hs_semanales=@hs_semanales, hs_totales=@hs_totales where id_materia=@id", sqlConn);
+                SqlCommand cmdSave = new SqlCommand("UPDATE materias SET desc_materia=@desc_materia, hs_semanales=@hs_semanales, hs_totales=@hs_totales, id_plan=@id_plan where id_materia=@id", sqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = materia.ID;
                 cmdSave.Parameters.Add("@desc_materia", SqlDbType.VarChar, 50).Value = materia.DescMateria;
                 cmdSave.Parameters.Add("@hs_semanales", SqlDbType.Int).Value = materia.HSSemanales;
                 cmdSave.Parameters.Add("@hs_totales", SqlDbType.Int).Value = materia.HSTotales;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = materia.IDPlan;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -105,11 +137,12 @@ namespace Data.Database
 
                 //creamos la sentencia sql y asignamos un valor al parámetro
                 SqlCommand cmdDelete = new SqlCommand("delete materias where id_materia=@id", sqlConn);
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al eliminar usuario", Ex);
+                Exception ExcepcionManejada = new Exception("Error al eliminar el curso", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -123,12 +156,13 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                "insert into usuarios(id_materia,desc_materia,hs_semanales,hs_totales) " +
-                "Values(@desc_materia,@hs_semanales,@hs_totales) " +
+                "insert into usuarios(id_materia,desc_materia,hs_semanales,hs_totales,id_plan) " +
+                "Values(@desc_materia,@hs_semanales,@hs_totales,@id_plan) " +
                 "selected @@identity", sqlConn);
                 cmdSave.Parameters.Add("@desc_materia", SqlDbType.VarChar, 50).Value = materia.DescMateria;
                 cmdSave.Parameters.Add("@hs_semanales", SqlDbType.Int).Value = materia.HSSemanales;
                 cmdSave.Parameters.Add("@hs_totales", SqlDbType.Int).Value = materia.HSTotales;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = materia.IDPlan;
             }
             catch (Exception Ex)
             {
