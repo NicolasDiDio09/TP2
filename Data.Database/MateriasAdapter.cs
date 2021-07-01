@@ -95,7 +95,7 @@ namespace Data.Database
             }
             catch (Exception e)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar datos del usuario", e);
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de la materia", e);
                 throw ExcepcionManejada;
             }
             finally
@@ -142,7 +142,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al eliminar el curso", Ex);
+                Exception ExcepcionManejada = new Exception("Error al eliminar la materia", Ex);
                 throw ExcepcionManejada;
             }
             finally
