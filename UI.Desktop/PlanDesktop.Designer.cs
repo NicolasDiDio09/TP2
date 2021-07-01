@@ -155,6 +155,7 @@ namespace UI.Desktop
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PlanDesktop";
             this.Text = "PlanDesktop";
+            this.Load += new System.EventHandler(this.PlanDesktop_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
