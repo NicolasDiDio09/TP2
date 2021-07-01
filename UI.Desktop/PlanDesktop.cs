@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,43 +8,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business.Entities;
 
 namespace UI.Desktop
 {
-    public partial class UsuarioDesktop : ApplicationForm
+    public partial class PlanDesktop : ApplicationForm
     {
-        public UsuarioDesktop()
+        public PlanDesktop()
         {
             InitializeComponent();
         }
 
-        public UsuarioDesktop(ModoForm modo) : this()
+        public PlanDesktop(ModoForm modo) : this()
         {
             Modo = modo;
         }
 
-        public UsuarioDesktop(int ID, ModoForm modo) : this()
+        public PlanDesktop(int ID, ModoForm modo) : this()
         {
-            UsuarioLogic user = new UsuarioLogic();
+            PlanLogic pla = new PlanLogic();
 
             Modo = modo;
-
-            UsuarioActual = user.GetOne(ID);
+            PlanActual = pla.GetOne(ID);
             MapearDeDatos();
         }
 
-        public Business.Entities.Usuario UsuarioActual { get; set; }
+        public Business.Entities.Plan PlanActual { get; set; }
 
         public override void MapearDeDatos()
         {
-            this.txtID.Text = this.UsuarioActual.ID.ToString();
-            this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
-            this.txtNombre.Text = this.UsuarioActual.Nombre.ToString();
-            this.txtApellido.Text = this.UsuarioActual.Apellido.ToString();
-            this.txtEmail.Text = this.UsuarioActual.Email.ToString();
-            this.txtUsuario.Text = this.UsuarioActual.NombreUsuario.ToString();
-            this.txtClave.Text = this.UsuarioActual.Clave.ToString();
-            this.txtConfirmarClave.Text = this.txtClave.Text;
+            this.txtId.Text = this.PlanActual.ID.ToString();
+            this.txtDescripcion.Text = this.PlanActual.DescPlan.ToString();
+            this.txtIdEspecialidad.Text = this.PlanActual.IDEspecialidad.ToString();
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -71,41 +67,33 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     this.btnAceptar.Text = "Guardar";
-                    Usuario Us = new Usuario();
-                    UsuarioActual = Us;
+                    Plan pl = new Plan();
+                    PlanActual = pl;
                     int id = 0;
-                    this.UsuarioActual.ID = id;
-                    this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-                    this.UsuarioActual.Nombre = this.txtNombre.Text;
-                    this.UsuarioActual.Apellido = this.txtApellido.Text;
-                    this.UsuarioActual.Email = this.txtEmail.Text;
-                    this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
-                    this.UsuarioActual.Clave = this.txtClave.Text;
-                    UsuarioActual.State = BusinessEntity.States.New;
+                    this.PlanActual.ID = id;
+                    this.PlanActual.DescPlan = this.txtDescripcion.Text;
+                    this.PlanActual.IDEspecialidad = int.Parse(this.txtIdEspecialidad.Text);
+                    PlanActual.State = BusinessEntity.States.New;
                     break;
 
                 case ModoForm.Modicacion:
                     this.btnAceptar.Text = "Guardar";
-                    Usuario Uss = new Usuario();
-                    UsuarioActual = Uss;
-                    this.UsuarioActual.ID = int.Parse(this.txtID.Text);
-                    this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-                    this.UsuarioActual.Nombre = this.txtNombre.Text;
-                    this.UsuarioActual.Apellido = this.txtApellido.Text;
-                    this.UsuarioActual.Email = this.txtEmail.Text;
-                    this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
-                    this.UsuarioActual.Clave = this.txtClave.Text;
-                    UsuarioActual.State = BusinessEntity.States.Modified;
+                    Plan pll = new Plan();
+                    PlanActual = pll;
+                    this.PlanActual.ID = int.Parse(this.txtId.Text);
+                    this.PlanActual.DescPlan = this.txtDescripcion.Text;
+                    this.PlanActual.IDEspecialidad = int.Parse(this.txtIdEspecialidad.Text);
+                    PlanActual.State = BusinessEntity.States.Modified;
                     break;
 
                 case ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
-                    UsuarioActual.State = BusinessEntity.States.Deleted;
+                    PlanActual.State = BusinessEntity.States.Deleted;
                     break;
 
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
-                    UsuarioActual.State = BusinessEntity.States.Unmodified;
+                    PlanActual.State = BusinessEntity.States.Unmodified;
                     break;
             }
         }
@@ -113,36 +101,19 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            UsuarioLogic us = new UsuarioLogic();
-            us.Save(UsuarioActual);
+            PlanLogic us = new PlanLogic();
+            us.Save(PlanActual);
         }
 
         public override bool Validar()
         {
 
-            bool b2 = string.IsNullOrEmpty(this.txtNombre.Text);
-            bool b3 = string.IsNullOrEmpty(this.txtApellido.Text);
-            bool b4 = string.IsNullOrEmpty(this.txtEmail.Text);
-            bool b5 = string.IsNullOrEmpty(this.txtUsuario.Text);
-            bool b6 = string.IsNullOrEmpty(this.txtClave.Text);
-            bool b7 = string.IsNullOrEmpty(this.txtConfirmarClave.Text);
+            bool b2 = string.IsNullOrEmpty(this.txtDescripcion.Text);
+            bool b3 = string.IsNullOrEmpty(this.txtIdEspecialidad.Text);
 
-            if (b2 == false && b3 == false && b4 == false && b5 == false && b6 == false && b7 == false)
+            if (b2 == false && b3 == false)
             {
-                if (txtClave.Text != txtConfirmarClave.Text)
-                {
-                    this.Notificar("Claves distintas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
-                else if (this.txtClave.Text.Length < 8)
-                {
-                    this.Notificar("La clave tiene menos de 8 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             else
             {
