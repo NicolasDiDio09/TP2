@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Data.Database;
+using Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace UI.Desktop
 {
@@ -27,14 +31,34 @@ namespace UI.Desktop
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (this.txtUsuario.Text == "Admin" && this.txtPass.Text == "admin")
+            const string consKeyDefaultCnnString = "ConnStringExpress";
+            UsuarioAdapter user = new UsuarioAdapter();
+            string connstr = ConfigurationManager.ConnectionStrings[consKeyDefaultCnnString].ConnectionString;
+            user.sqlConn = new SqlConnection(connstr);
+            
+
+            try
             {
-                this.DialogResult = DialogResult.OK;
+                user.sqlConn.Open();
+                SqlCommand cmdUser = new SqlCommand("Select clave from usuarios where nombre_usuario=@nombre_usuario", user.sqlConn);
+                cmdUser.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = this.txtUsuario.Text.ToString();
+                string pass = cmdUser.ExecuteScalar().ToString();
+                if (this.txtPass.Text == pass )
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch(NullReferenceException nre)
             {
-                MessageBox.Show("Usuario y/o contraseña incorrectos", "Login"
-                    , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                user.sqlConn.Close();
             }
         }
     }
