@@ -19,12 +19,13 @@ namespace UI.Desktop
             InitializeComponent();
             this.dgvCursos.AutoGenerateColumns = false;
         }
+
         public void Listar()
         {
             try
             {
-                CursoLogic cur = new CursoLogic();
-                this.dgvCursos.DataSource = cur.GetAll();
+                CursoLogic ul = new CursoLogic();
+                this.dgvCursos.DataSource = ul.GetAll();
             }
             catch (FormatException fe)
             {
@@ -34,9 +35,25 @@ namespace UI.Desktop
             }
         }
 
-        private void Curso_Load(object sender, EventArgs e)
+        private void Usuarios_Load(object sender, EventArgs e)
         {
             this.Listar();
+        }
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tsCursos_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -44,42 +61,28 @@ namespace UI.Desktop
             this.Listar();
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            CursoDesktop cur = new CursoDesktop(ModoForm.Alta);
-            cur.ShowDialog();
-            this.Listar();
+            UsuarioDesktop ud = new UsuarioDesktop(ModoForm.Alta);
+            ud.ShowDialog();
+            Listar();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            int id = ((Business.Entities.Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
-            CursoDesktop cur = new CursoDesktop(id, ModoForm.Modicacion);
-            cur.ShowDialog();
-            this.Listar();
+            int id = ((Business.Entities.Usuario)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            CursoDesktop us = new CursoDesktop(id, ModoForm.Modicacion);
+            us.ShowDialog();
+            Listar();
+
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int id = ((Business.Entities.Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
-            CursoDesktop cur = new CursoDesktop(id, ModoForm.Baja);
-            cur.ShowDialog();
-            this.Listar();
-        }
-
-        private void toolStripContainer1_RightToolStripPanel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSalir_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
+            CursoDesktop us = new CursoDesktop(id, ModoForm.Baja);
+            us.ShowDialog();
+            Listar();
         }
     }
 }
