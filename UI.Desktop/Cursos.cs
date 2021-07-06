@@ -12,29 +12,29 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class Materias : Form
+    public partial class Cursos : Form
     {
-        public Materias()
+        public Cursos()
         {
             InitializeComponent();
-            this.dgvMaterias.AutoGenerateColumns = false;
+            this.dgvCursos.AutoGenerateColumns = false;
         }
         public void Listar()
         {
             try
             {
-                MateriaLogic mat = new MateriaLogic();
-                this.dgvMaterias.DataSource = mat.GetAll();
+                CursoLogic cur = new CursoLogic();
+                this.dgvCursos.DataSource = cur.GetAll();
             }
             catch (FormatException fe)
             {
-                MessageBox.Show("Error al recuperar la lista de materias");
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", fe);
+                MessageBox.Show("Error al recuperar la lista de cursos");
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos", fe);
                 throw ExcepcionManejada;
             }
         }
 
-        private void Materias_Load(object sender, EventArgs e)
+        private void Curso_Load(object sender, EventArgs e)
         {
             this.Listar();
         }
@@ -51,30 +51,35 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            MateriaDesktop mat = new MateriaDesktop(ModoForm.Alta);
-            mat.ShowDialog();
+            CursoDesktop cur = new CursoDesktop(ModoForm.Alta);
+            cur.ShowDialog();
             this.Listar();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            int id = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-            MateriaDesktop mat = new MateriaDesktop(id, ModoForm.Modicacion);
-            mat.ShowDialog();
+            int id = ((Business.Entities.Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            CursoDesktop cur = new CursoDesktop(id, ModoForm.Modicacion);
+            cur.ShowDialog();
             this.Listar();
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            int id = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-            MateriaDesktop mat = new MateriaDesktop(id, ModoForm.Baja);
-            mat.ShowDialog();
+            int id = ((Business.Entities.Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            CursoDesktop cur = new CursoDesktop(id, ModoForm.Baja);
+            cur.ShowDialog();
             this.Listar();
         }
 
         private void toolStripContainer1_RightToolStripPanel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
