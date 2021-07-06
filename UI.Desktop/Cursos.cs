@@ -63,7 +63,7 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            UsuarioDesktop ud = new UsuarioDesktop(ModoForm.Alta);
+            CursoDesktop ud = new CursoDesktop(ModoForm.Alta);
             ud.ShowDialog();
             Listar();
         }
