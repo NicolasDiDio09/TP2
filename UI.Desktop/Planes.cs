@@ -77,5 +77,27 @@ namespace UI.Desktop
         {
 
         }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dgvPlanes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnActualiza_Click_1(object sender, EventArgs e)
+        {
+            this.Listar();
+        }
+
+        private void tsbNuevo_Click_1(object sender, EventArgs e)
+        {
+            PlanDesktop pla = new PlanDesktop(ModoForm.Alta);
+            pla.ShowDialog();
+            this.Listar();
+        }
     }
 }

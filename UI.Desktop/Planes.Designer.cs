@@ -263,6 +263,7 @@ namespace UI.Desktop
             this.dgvPlanes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlanes.Size = new System.Drawing.Size(341, 390);
             this.dgvPlanes.TabIndex = 0;
+            this.dgvPlanes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanes_CellContentClick);
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -311,6 +312,7 @@ namespace UI.Desktop
             this.btnActualiza.TabIndex = 1;
             this.btnActualiza.Text = "Actualizar";
             this.btnActualiza.UseVisualStyleBackColor = true;
+            this.btnActualiza.Click += new System.EventHandler(this.btnActualiza_Click);
             // 
             // btnSalir
             // 
@@ -320,6 +322,7 @@ namespace UI.Desktop
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // tsPlanes
             // 
@@ -343,6 +346,7 @@ namespace UI.Desktop
             this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
             this.tsbNuevo.Text = "toolStripButton1";
             this.tsbNuevo.ToolTipText = "Nuevo";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbEditar
             // 
@@ -353,6 +357,7 @@ namespace UI.Desktop
             this.tsbEditar.Size = new System.Drawing.Size(23, 22);
             this.tsbEditar.Text = "toolStripButton1";
             this.tsbEditar.ToolTipText = "Editar";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
             // tsbEliminar
             // 
@@ -363,6 +368,7 @@ namespace UI.Desktop
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
             this.tsbEliminar.Text = "toolStripButton1";
             this.tsbEliminar.ToolTipText = "Eliminar";
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
             // Planes
             // 

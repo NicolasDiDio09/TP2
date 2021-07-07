@@ -75,7 +75,6 @@ namespace UI.Desktop
             this.label2.TabIndex = 0;
             this.label2.Text = "ID";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtId
             // 
@@ -146,6 +145,7 @@ namespace UI.Desktop
             this.btnAceptar.TabIndex = 8;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // PlanDesktop
             // 
@@ -155,7 +155,6 @@ namespace UI.Desktop
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PlanDesktop";
             this.Text = "PlanDesktop";
-            //this.Load += new System.EventHandler(this.PlanDesktop_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
