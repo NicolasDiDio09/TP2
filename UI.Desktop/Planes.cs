@@ -24,8 +24,8 @@ namespace UI.Desktop
         {
             try
             {
-                PlanLogic pla = new PlanLogic();
-                this.dgvPlanes.DataSource = pla.GetAll();
+                PlanLogic mat = new PlanLogic();
+                this.dgvPlanes.DataSource = mat.GetAll();
             }
             catch (FormatException fe)
             {
@@ -35,68 +35,42 @@ namespace UI.Desktop
             }
         }
 
-        private void Planes_Load(object sender, EventArgs e)
-        {
-            this.Listar();
-        }
-
-        private void btnActualiza_Click(object sender, EventArgs e)
-        {
-            this.Listar();
-        }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            PlanDesktop pla = new PlanDesktop(ModoForm.Alta);
-            pla.ShowDialog();
+            PlanDesktop mat = new PlanDesktop(ModoForm.Alta);
+            mat.ShowDialog();
             this.Listar();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int id = ((Business.Entities.Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
-            PlanDesktop pla = new PlanDesktop(id, ModoForm.Modicacion);
-            pla.ShowDialog();
+            PlanDesktop mat = new PlanDesktop(id, ModoForm.Modicacion);
+            mat.ShowDialog();
             this.Listar();
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int id = ((Business.Entities.Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
-            PlanDesktop pla = new PlanDesktop(id, ModoForm.Baja);
-            pla.ShowDialog();
+            PlanDesktop mat = new PlanDesktop(id, ModoForm.Baja);
+            mat.ShowDialog();
             this.Listar();
         }
 
-        private void tsPlanes_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void Planes_Load(object sender, EventArgs e)
         {
-
+            this.Listar();
         }
 
-        private void btnSalir_Click_1(object sender, EventArgs e)
+
+        private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void dgvPlanes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnActualizar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnActualiza_Click_1(object sender, EventArgs e)
-        {
-            this.Listar();
-        }
-
-        private void tsbNuevo_Click_1(object sender, EventArgs e)
-        {
-            PlanDesktop pla = new PlanDesktop(ModoForm.Alta);
-            pla.ShowDialog();
             this.Listar();
         }
     }
