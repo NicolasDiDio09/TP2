@@ -93,6 +93,7 @@ namespace UI.Desktop
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnsPrincipal;
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Academia";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.Shown += new System.EventHandler(this.FormMain_Shown);
