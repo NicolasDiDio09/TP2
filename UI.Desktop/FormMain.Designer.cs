@@ -33,6 +33,7 @@ namespace UI.Desktop
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbmMaterias = new System.Windows.Forms.Button();
+            this.btnAbmComisiones = new System.Windows.Forms.Button();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,17 +72,29 @@ namespace UI.Desktop
             this.btnAbmMaterias.UseVisualStyleBackColor = true;
             this.btnAbmMaterias.Click += new System.EventHandler(this.btnAbmMaterias_Click);
             // 
+            // btnAbmComisiones
+            // 
+            this.btnAbmComisiones.Location = new System.Drawing.Point(0, 151);
+            this.btnAbmComisiones.Name = "btnAbmComisiones";
+            this.btnAbmComisiones.Size = new System.Drawing.Size(800, 23);
+            this.btnAbmComisiones.TabIndex = 5;
+            this.btnAbmComisiones.Text = "abm comisiones";
+            this.btnAbmComisiones.UseVisualStyleBackColor = true;
+            this.btnAbmComisiones.Click += new System.EventHandler(this.btnAbmComisiones_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAbmComisiones);
             this.Controls.Add(this.btnAbmMaterias);
             this.Controls.Add(this.mnsPrincipal);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnsPrincipal;
             this.Name = "FormMain";
             this.Text = "Academia";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.mnsPrincipal.ResumeLayout(false);
             this.mnsPrincipal.PerformLayout();
@@ -96,5 +109,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuSalir;
         private System.Windows.Forms.Button btnAbmMaterias;
+        private System.Windows.Forms.Button btnAbmComisiones;
     }
 }

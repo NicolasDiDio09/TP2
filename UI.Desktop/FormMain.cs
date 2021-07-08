@@ -37,5 +37,16 @@ namespace UI.Desktop
             Materias mate = new Materias();
             mate.ShowDialog();
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAbmComisiones_Click(object sender, EventArgs e)
+        {
+            Comisiones comi = new Comisiones();
+            comi.ShowDialog();
+        }
     }
 }
