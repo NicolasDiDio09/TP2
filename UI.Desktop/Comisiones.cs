@@ -38,12 +38,12 @@ namespace UI.Desktop
         {
             this.Listar();
         }
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Listar();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
             this.Close(); //cierra el form actual, osea el "Comisiones"
         }

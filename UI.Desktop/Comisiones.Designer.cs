@@ -37,8 +37,8 @@ namespace UI.Desktop
             this.descComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.añoEspecialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
@@ -75,8 +75,8 @@ namespace UI.Desktop
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.dgvComisiones, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -128,27 +128,27 @@ namespace UI.Desktop
             this.idPlan.HeaderText = "idPlan";
             this.idPlan.Name = "idPlan";
             // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAceptar.Location = new System.Drawing.Point(722, 360);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 62);
-            this.btnAceptar.TabIndex = 1;
-            this.btnAceptar.Text = "Actualizar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
-            // 
             // btnCancelar
             // 
-            this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnCancelar.Location = new System.Drawing.Point(641, 360);
+            this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancelar.Location = new System.Drawing.Point(722, 360);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 62);
-            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Salir";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAceptar.Location = new System.Drawing.Point(641, 360);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 62);
+            this.btnAceptar.TabIndex = 2;
+            this.btnAceptar.Text = "Actualizar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // toolStrip1
             // 
@@ -221,8 +221,8 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dgvComisiones;
-        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbEditar;

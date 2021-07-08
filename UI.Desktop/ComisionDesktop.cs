@@ -84,7 +84,7 @@ namespace UI.Desktop
                     this.ComisionActual.ID = int.Parse(this.txtIdComision.Text);
                     this.ComisionActual.DescComision = this.txtDescripcionComision.Text;
                     this.ComisionActual.AnioEspecialidad = int.Parse(this.txtAnioEspecialidad.Text);
-                    this.ComisionActual.IdPlan = int.Parse(this.txtAnioEspecialidad.Text);
+                    this.ComisionActual.IdPlan = int.Parse(this.txtIdPlan.Text);
                     ComisionActual.State = Business.Entities.Comision.States.Modified;
                     break;
 

@@ -166,7 +166,7 @@ namespace Data.Database
                 SqlCommand cmdSave = new SqlCommand(
                 "insert into comisiones(desc_comision,anio_especialidad,id_plan) " +
                 "Values(@desc_comision,@anio_especialidad,@id_plan)", sqlConn);
-                cmdSave.Parameters.Add("@desc_comision", SqlDbType.VarChar, 50).Value = comi.AnioEspecialidad;
+                cmdSave.Parameters.Add("@desc_comision", SqlDbType.VarChar, 50).Value = comi.DescComision;
                 cmdSave.Parameters.Add("@anio_especialidad", SqlDbType.Int).Value = comi.AnioEspecialidad;
                 cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = comi.IdPlan;
                 cmdSave.ExecuteNonQuery();
