@@ -34,13 +34,15 @@ namespace UI.Desktop
             this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbmMaterias = new System.Windows.Forms.Button();
             this.btnAbmComisiones = new System.Windows.Forms.Button();
+            this.altaUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnsPrincipal
             // 
             this.mnsPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem});
+            this.archivoToolStripMenuItem,
+            this.altaUsuariosToolStripMenuItem});
             this.mnsPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnsPrincipal.Name = "mnsPrincipal";
             this.mnsPrincipal.Size = new System.Drawing.Size(800, 24);
@@ -58,7 +60,7 @@ namespace UI.Desktop
             // mnuSalir
             // 
             this.mnuSalir.Name = "mnuSalir";
-            this.mnuSalir.Size = new System.Drawing.Size(96, 22);
+            this.mnuSalir.Size = new System.Drawing.Size(180, 22);
             this.mnuSalir.Text = "Salir";
             this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
             // 
@@ -81,6 +83,12 @@ namespace UI.Desktop
             this.btnAbmComisiones.Text = "abm comisiones";
             this.btnAbmComisiones.UseVisualStyleBackColor = true;
             this.btnAbmComisiones.Click += new System.EventHandler(this.btnAbmComisiones_Click);
+            // 
+            // altaUsuariosToolStripMenuItem
+            // 
+            this.altaUsuariosToolStripMenuItem.Name = "altaUsuariosToolStripMenuItem";
+            this.altaUsuariosToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.altaUsuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // FormMain
             // 
@@ -111,5 +119,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem mnuSalir;
         private System.Windows.Forms.Button btnAbmMaterias;
         private System.Windows.Forms.Button btnAbmComisiones;
+        private System.Windows.Forms.ToolStripMenuItem altaUsuariosToolStripMenuItem;
     }
 }

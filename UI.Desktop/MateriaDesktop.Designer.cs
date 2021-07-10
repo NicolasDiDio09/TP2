@@ -42,6 +42,7 @@ namespace UI.Desktop
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtIDPlan = new System.Windows.Forms.TextBox();
+            this.cbxPlan = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +65,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtIDPlan, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cbxPlan, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -181,6 +183,14 @@ namespace UI.Desktop
             this.txtIDPlan.Size = new System.Drawing.Size(206, 23);
             this.txtIDPlan.TabIndex = 11;
             // 
+            // cbxPlan
+            // 
+            this.cbxPlan.FormattingEnabled = true;
+            this.cbxPlan.Location = new System.Drawing.Point(81, 93);
+            this.cbxPlan.Name = "cbxPlan";
+            this.cbxPlan.Size = new System.Drawing.Size(205, 23);
+            this.cbxPlan.TabIndex = 12;
+            // 
             // MateriaDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -210,5 +220,6 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtIDPlan;
+        private System.Windows.Forms.ComboBox cbxPlan;
     }
 }

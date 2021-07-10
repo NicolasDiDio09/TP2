@@ -12,6 +12,7 @@ using Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
+
 namespace UI.Desktop
 {
     public partial class FormLogin : Form
@@ -25,22 +26,40 @@ namespace UI.Desktop
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Es Ud. un usuario muy descuidado, haga memoria", "Olvidé mi contraseña",
-                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show("Es Ud. un usuario muy descuidado, haga memoria", "Olvidé mi contraseña", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            const string consKeyDefaultCnnString = "ConnStringExpress";
-            UsuarioAdapter user = new UsuarioAdapter();
-            string connstr = ConfigurationManager.ConnectionStrings[consKeyDefaultCnnString].ConnectionString;
-            user.sqlConn = new SqlConnection(connstr);
-            
-
             try
             {
-                user.sqlConn.Open();
-                SqlCommand cmdUser = new SqlCommand("Select clave from usuarios where nombre_usuario=@nombre_usuario", user.sqlConn);
+
+                Business.Logic.UsuarioLogic ul = new Business.Logic.UsuarioLogic();
+                List<Business.Entities.Usuario> users = ul.GetAll();
+                foreach(Business.Entities.Usuario user in users)
+                {
+                    if(user.NombreUsuario == txtUsuario.Text)
+                    {
+                        if(txtPass.Text == user.Clave)
+                        {
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    } 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            /*
+            try
+            {
+                ul.UsuarioData.sqlConn.Open();
+                SqlCommand cmdUser = new SqlCommand("Select clave from usuarios where nombre_usuario=@nombre_usuario", ul.UsuarioData.sqlConn);
                 cmdUser.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = this.txtUsuario.Text.ToString();
                 string pass = cmdUser.ExecuteScalar().ToString();
                 if (this.txtPass.Text == pass )
@@ -58,8 +77,9 @@ namespace UI.Desktop
             }
             finally
             {
-                user.sqlConn.Close();
+                ul.UsuarioData.sqlConn.Close();
             }
+            */
         }
     }
 }
