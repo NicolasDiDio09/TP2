@@ -73,7 +73,7 @@ namespace UI.Desktop
                     CursoActual = Us;
                     int id = 0;
                     this.CursoActual.ID = id;
-                    this.CursoActual.AnioCalendario = this.txtAnio.Text;
+                    this.CursoActual.AnioCalendario = int.Parse(this.txtAnio.Text);
                     this.CursoActual.Cupo = int.Parse(this.txtCupo.Text);
                     this.CursoActual.IDComision = int.Parse(this.txtIdComision.Text);
                     this.CursoActual.IDMateria = int.Parse(this.txtidMateria.Text);
@@ -86,7 +86,7 @@ namespace UI.Desktop
                     CursoActual = Uss;
                     this.CursoActual.ID = int.Parse(this.txtIdCurso.Text);
                     this.CursoActual.Cupo = int.Parse(this.txtCupo.Text);
-                    this.CursoActual.AnioCalendario = this.txtAnio.Text;
+                    this.CursoActual.AnioCalendario = int.Parse(this.txtAnio.Text);
                     this.CursoActual.IDComision = int.Parse(this.txtIdComision.Text);
                     this.CursoActual.IDMateria = int.Parse(this.txtidMateria.Text);
                     CursoActual.State = BusinessEntity.States.Modified;
@@ -146,5 +146,6 @@ namespace UI.Desktop
         {
             this.Close();
         }
+
     }
 }
