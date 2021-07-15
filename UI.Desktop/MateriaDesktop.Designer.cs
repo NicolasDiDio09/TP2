@@ -41,7 +41,6 @@ namespace UI.Desktop
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtIDPlan = new System.Windows.Forms.TextBox();
             this.cbxPlan = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -64,8 +63,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtIDPlan, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.cbxPlan, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cbxPlan, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -171,22 +169,14 @@ namespace UI.Desktop
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(292, 90);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 15);
+            this.label5.Size = new System.Drawing.Size(95, 15);
             this.label5.TabIndex = 10;
-            this.label5.Text = "ID plan";
-            // 
-            // txtIDPlan
-            // 
-            this.txtIDPlan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtIDPlan.Location = new System.Drawing.Point(394, 93);
-            this.txtIDPlan.Name = "txtIDPlan";
-            this.txtIDPlan.Size = new System.Drawing.Size(206, 23);
-            this.txtIDPlan.TabIndex = 11;
+            this.label5.Text = "Descripcion plan";
             // 
             // cbxPlan
             // 
             this.cbxPlan.FormattingEnabled = true;
-            this.cbxPlan.Location = new System.Drawing.Point(81, 93);
+            this.cbxPlan.Location = new System.Drawing.Point(394, 93);
             this.cbxPlan.Name = "cbxPlan";
             this.cbxPlan.Size = new System.Drawing.Size(205, 23);
             this.cbxPlan.TabIndex = 12;
@@ -219,7 +209,6 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtIDPlan;
         private System.Windows.Forms.ComboBox cbxPlan;
     }
 }

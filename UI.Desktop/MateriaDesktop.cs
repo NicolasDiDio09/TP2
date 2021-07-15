@@ -45,7 +45,7 @@ namespace UI.Desktop
             this.txtDescripcion.Text= this.MateriaActual.DescMateria.ToString();
             this.txtHSSemanales.Text = this.MateriaActual.HSSemanales.ToString();
             this.txtHSTotales.Text = this.MateriaActual.HSTotales.ToString();
-            this.txtIDPlan.Text = this.MateriaActual.IDPlan.ToString();
+            //this.cbxPlan.SelectedValue = this.MateriaActual.IDPlan;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -80,7 +80,7 @@ namespace UI.Desktop
                     this.MateriaActual.DescMateria = this.txtDescripcion.Text;
                     this.MateriaActual.HSSemanales = int.Parse(this.txtHSSemanales.Text);
                     this.MateriaActual.HSTotales = int.Parse(this.txtHSTotales.Text);
-                    this.MateriaActual.IDPlan = int.Parse(this.txtIDPlan.Text);
+                    this.MateriaActual.IDPlan= Int32.Parse(this.cbxPlan.SelectedValue.ToString());
                     MateriaActual.State = BusinessEntity.States.New;
                     break;
 
@@ -92,7 +92,7 @@ namespace UI.Desktop
                     this.MateriaActual.DescMateria = this.txtDescripcion.Text;
                     this.MateriaActual.HSSemanales = int.Parse(this.txtHSSemanales.Text);
                     this.MateriaActual.HSTotales = int.Parse(this.txtHSTotales.Text);
-                    this.MateriaActual.IDPlan = int.Parse(this.txtIDPlan.Text);
+                    this.MateriaActual.IDPlan = Int32.Parse(this.cbxPlan.SelectedValue.ToString());
                     MateriaActual.State = BusinessEntity.States.Modified;
                     break;
 
@@ -121,9 +121,9 @@ namespace UI.Desktop
             bool b1 = string.IsNullOrEmpty(this.txtDescripcion.Text);
             bool b2 = string.IsNullOrEmpty(this.txtHSSemanales.Text);
             bool b3 = string.IsNullOrEmpty(this.txtHSTotales.Text);
-            bool b4 = string.IsNullOrEmpty(this.txtIDPlan.Text);
+            //bool b4 = string.IsNullOrEmpty(this.txtIDPlan.Text);
 
-            if (b1 == false && b2 == false && b3 == false && b4==false)
+            if (b1 == false && b2 == false && b3 == false /*&& b4==false*/)
             {
                 return true;
             }
