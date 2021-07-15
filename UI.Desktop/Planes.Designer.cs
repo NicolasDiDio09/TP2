@@ -63,7 +63,7 @@ namespace UI.Desktop
             this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNuevo.Name = "tsbNuevo";
             this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
-            this.tsbNuevo.Text = "toolStripButton1";
+            this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbEditar
@@ -73,7 +73,7 @@ namespace UI.Desktop
             this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditar.Name = "tsbEditar";
             this.tsbEditar.Size = new System.Drawing.Size(23, 22);
-            this.tsbEditar.Text = "toolStripButton1";
+            this.tsbEditar.Text = "Editar";
             this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
             // tsbEliminar
@@ -83,7 +83,7 @@ namespace UI.Desktop
             this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEliminar.Name = "tsbEliminar";
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
-            this.tsbEliminar.Text = "toolStripButton1";
+            this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
             // dgvPlanes
