@@ -35,7 +35,7 @@ namespace UI.Desktop
             }
         }
 
-        private void Usuarios_Load(object sender, EventArgs e)
+        private void Cursos_Load(object sender, EventArgs e)
         {
             this.Listar();
         }
@@ -72,6 +72,16 @@ namespace UI.Desktop
             CursoDesktop us = new CursoDesktop(id, ModoForm.Baja);
             us.ShowDialog();
             Listar();
+        }
+
+        private void dgvCursos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Cursos_Load_1(object sender, EventArgs e)
+        {
+            this.Listar();
         }
     }
 }

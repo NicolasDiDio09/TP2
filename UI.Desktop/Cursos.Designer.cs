@@ -56,18 +56,18 @@ namespace UI.Desktop
             this.IdMateria,
             this.IdComision});
             this.dgvCursos.Enabled = false;
-            this.dgvCursos.Location = new System.Drawing.Point(0, 37);
-            this.dgvCursos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvCursos.Location = new System.Drawing.Point(0, 28);
             this.dgvCursos.Name = "dgvCursos";
             this.dgvCursos.ReadOnly = true;
             this.dgvCursos.RowHeadersWidth = 51;
             this.dgvCursos.RowTemplate.Height = 25;
-            this.dgvCursos.Size = new System.Drawing.Size(621, 364);
+            this.dgvCursos.Size = new System.Drawing.Size(543, 273);
             this.dgvCursos.TabIndex = 2;
+            this.dgvCursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCursos_CellContentClick);
             // 
             // IDCursos
             // 
-            this.IDCursos.DataPropertyName = "idCursos";
+            this.IDCursos.DataPropertyName = "ID";
             this.IDCursos.HeaderText = "ID";
             this.IDCursos.MinimumWidth = 6;
             this.IDCursos.Name = "IDCursos";
@@ -112,10 +112,9 @@ namespace UI.Desktop
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(488, 409);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancelar.Location = new System.Drawing.Point(427, 307);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(122, 31);
+            this.btnCancelar.Size = new System.Drawing.Size(107, 23);
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Salir";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -123,10 +122,9 @@ namespace UI.Desktop
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(344, 409);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnActualizar.Location = new System.Drawing.Point(301, 307);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(122, 31);
+            this.btnActualizar.Size = new System.Drawing.Size(107, 23);
             this.btnActualizar.TabIndex = 4;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -141,7 +139,7 @@ namespace UI.Desktop
             this.tsbEliminar});
             this.tsCursos.Location = new System.Drawing.Point(0, 0);
             this.tsCursos.Name = "tsCursos";
-            this.tsCursos.Size = new System.Drawing.Size(624, 27);
+            this.tsCursos.Size = new System.Drawing.Size(546, 27);
             this.tsCursos.TabIndex = 5;
             this.tsCursos.Text = "toolStrip1";
             // 
@@ -151,9 +149,10 @@ namespace UI.Desktop
             this.tsbNuevo.Image = ((System.Drawing.Image)(resources.GetObject("tsbNuevo.Image")));
             this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(29, 24);
+            this.tsbNuevo.Size = new System.Drawing.Size(24, 24);
             this.tsbNuevo.Text = "tsbNuevo";
             this.tsbNuevo.ToolTipText = "Nuevo";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbEditar
             // 
@@ -161,9 +160,10 @@ namespace UI.Desktop
             this.tsbEditar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEditar.Image")));
             this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(29, 24);
+            this.tsbEditar.Size = new System.Drawing.Size(24, 24);
             this.tsbEditar.Text = "tsbEditar";
             this.tsbEditar.ToolTipText = "Editar";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
             // tsbEliminar
             // 
@@ -171,22 +171,23 @@ namespace UI.Desktop
             this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
             this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(29, 24);
+            this.tsbEliminar.Size = new System.Drawing.Size(24, 24);
             this.tsbEliminar.Text = "tsbEliminar";
             this.tsbEliminar.ToolTipText = "Eliminar";
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
             // Cursos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 452);
+            this.ClientSize = new System.Drawing.Size(546, 339);
             this.Controls.Add(this.tsCursos);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.dgvCursos);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Cursos";
             this.Text = "Cursos";
+            this.Load += new System.EventHandler(this.Cursos_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).EndInit();
             this.tsCursos.ResumeLayout(false);
             this.tsCursos.PerformLayout();
@@ -197,16 +198,16 @@ namespace UI.Desktop
 
         #endregion
         private System.Windows.Forms.DataGridView dgvCursos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDCursos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AnioCalendario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cupo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdMateria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdComision;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.ToolStrip tsCursos;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCursos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AnioCalendario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cupo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdMateria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdComision;
     }
 }
