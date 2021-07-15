@@ -47,7 +47,7 @@ namespace UI.Desktop
             int id = ((Business.Entities.Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
             PlanDesktop mat = new PlanDesktop(id, ModoForm.Modicacion);
             mat.ShowDialog();
-            this.Listar();
+            Listar();
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)

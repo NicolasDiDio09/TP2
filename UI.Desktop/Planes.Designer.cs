@@ -88,6 +88,8 @@ namespace UI.Desktop
             // 
             // dgvPlanes
             // 
+            this.dgvPlanes.AllowUserToAddRows = false;
+            this.dgvPlanes.AllowUserToDeleteRows = false;
             this.dgvPlanes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlanes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._id,
@@ -95,6 +97,7 @@ namespace UI.Desktop
             this.idespecialidad});
             this.dgvPlanes.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvPlanes.Location = new System.Drawing.Point(0, 25);
+            this.dgvPlanes.MultiSelect = false;
             this.dgvPlanes.Name = "dgvPlanes";
             this.dgvPlanes.RowTemplate.Height = 25;
             this.dgvPlanes.Size = new System.Drawing.Size(433, 384);

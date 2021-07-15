@@ -11,7 +11,7 @@ namespace Data.Database
 {
     public class PlanesAdapter:Adapter
     {
-        private static List<Plan> _Planes;
+        /*private static List<Plan> _Planes;
 
         private static List<Plan> Planes
         {
@@ -37,7 +37,7 @@ namespace Data.Database
                 }
                 return _Planes;
             }
-        }
+        } */
 
         public List<Plan> GetAll()
         {
@@ -53,7 +53,7 @@ namespace Data.Database
                     p.ID = (int)drPlanes["id_plan"];
                     p.DescPlan = (string)drPlanes["desc_plan"];
                     p.IDEspecialidad = (int)drPlanes["id_especialidad"];
-                    Planes.Add(p);
+                    planes.Add(p);
                 }
                 drPlanes.Close();
             }
