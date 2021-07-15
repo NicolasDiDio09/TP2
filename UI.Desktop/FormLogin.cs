@@ -31,30 +31,41 @@ namespace UI.Desktop
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            try
-            {
+            
 
-                Business.Logic.UsuarioLogic ul = new Business.Logic.UsuarioLogic();
-                List<Business.Entities.Usuario> users = ul.GetAll();
-                foreach(Business.Entities.Usuario user in users)
+            Business.Logic.UsuarioLogic ul = new Business.Logic.UsuarioLogic();
+            List<Business.Entities.Usuario> users = ul.GetAll();
+
+            Business.Entities.Usuario usuario = new Business.Entities.Usuario();
+            bool encuentra = false;
+
+            foreach (Business.Entities.Usuario user in users)
+            {
+                if (user.NombreUsuario == txtUsuario.Text)
                 {
-                    if(user.NombreUsuario == txtUsuario.Text)
-                    {
-                        if(txtPass.Text == user.Clave)
-                        {
-                            this.DialogResult = DialogResult.OK;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    } 
+                    encuentra = true;
+                    usuario = user;
                 }
             }
-            catch (Exception ex)
+
+            if (encuentra == true)
+            {
+                if(usuario.Clave == txtPass.Text)
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
             {
                 MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
+
+            #region Esta mal
             /*
             try
             {
@@ -80,6 +91,7 @@ namespace UI.Desktop
                 ul.UsuarioData.sqlConn.Close();
             }
             */
+            #endregion
         }
     }
 }
