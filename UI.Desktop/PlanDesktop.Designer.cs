@@ -75,13 +75,13 @@ namespace UI.Desktop
             this.label2.TabIndex = 0;
             this.label2.Text = "ID";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtId
             // 
             this.txtId.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtId.Location = new System.Drawing.Point(226, 3);
             this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(217, 23);
             this.txtId.TabIndex = 1;
             this.txtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -146,6 +146,7 @@ namespace UI.Desktop
             this.btnAceptar.TabIndex = 8;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // PlanDesktop
             // 
@@ -155,7 +156,6 @@ namespace UI.Desktop
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PlanDesktop";
             this.Text = "PlanDesktop";
-            //this.Load += new System.EventHandler(this.PlanDesktop_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

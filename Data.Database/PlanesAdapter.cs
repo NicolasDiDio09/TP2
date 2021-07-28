@@ -11,7 +11,7 @@ namespace Data.Database
 {
     public class PlanesAdapter:Adapter
     {
-        private static List<Plan> _Planes;
+        /*private static List<Plan> _Planes;
 
         private static List<Plan> Planes
         {
@@ -37,7 +37,7 @@ namespace Data.Database
                 }
                 return _Planes;
             }
-        }
+        } */
 
         public List<Plan> GetAll()
         {
@@ -53,7 +53,7 @@ namespace Data.Database
                     p.ID = (int)drPlanes["id_plan"];
                     p.DescPlan = (string)drPlanes["desc_plan"];
                     p.IDEspecialidad = (int)drPlanes["id_especialidad"];
-                    Planes.Add(p);
+                    planes.Add(p);
                 }
                 drPlanes.Close();
             }
@@ -103,7 +103,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE planes SET desc_planes=@desc_planes, id_especialidad=@id_especialidad where id_plan=@id", sqlConn);
+                SqlCommand cmdSave = new SqlCommand("UPDATE planes SET desc_plan=@desc_plan, id_especialidad=@id_especialidad where id_plan=@id", sqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
                 cmdSave.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.DescPlan;
                 cmdSave.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IDEspecialidad;

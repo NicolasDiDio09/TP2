@@ -108,6 +108,7 @@ namespace UI.Desktop
             this.dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMaterias.Size = new System.Drawing.Size(545, 390);
             this.dgvMaterias.TabIndex = 0;
+            this.dgvMaterias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaterias_CellContentClick);
             // 
             // id
             // 

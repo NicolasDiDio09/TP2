@@ -71,5 +71,10 @@ namespace UI.Desktop
             mat.ShowDialog();
             this.Listar();
         }
+
+        private void dgvMaterias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
