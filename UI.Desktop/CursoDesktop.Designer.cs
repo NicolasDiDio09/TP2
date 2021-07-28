@@ -50,7 +50,7 @@ namespace UI.Desktop
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 20);
+            this.label1.Size = new System.Drawing.Size(18, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "ID";
             // 
@@ -59,8 +59,8 @@ namespace UI.Desktop
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.85075F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.14925F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 183F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtIdCurso, 1, 0);
@@ -73,127 +73,122 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.txtIdComision, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 3, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 3);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(568, 247);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(497, 185);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 73);
+            this.label2.Location = new System.Drawing.Point(3, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 60);
+            this.label2.Size = new System.Drawing.Size(55, 45);
             this.label2.TabIndex = 2;
             this.label2.Text = "Año calendario";
             // 
             // txtIdCurso
             // 
             this.txtIdCurso.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtIdCurso.Location = new System.Drawing.Point(81, 4);
-            this.txtIdCurso.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtIdCurso.Location = new System.Drawing.Point(68, 3);
             this.txtIdCurso.Name = "txtIdCurso";
-            this.txtIdCurso.Size = new System.Drawing.Size(179, 27);
+            this.txtIdCurso.ReadOnly = true;
+            this.txtIdCurso.Size = new System.Drawing.Size(149, 23);
             this.txtIdCurso.TabIndex = 3;
             // 
             // txtAnio
             // 
             this.txtAnio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtAnio.Location = new System.Drawing.Point(81, 77);
-            this.txtAnio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAnio.Location = new System.Drawing.Point(68, 58);
             this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(179, 27);
+            this.txtAnio.Size = new System.Drawing.Size(149, 23);
             this.txtAnio.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(266, 0);
+            this.label3.Location = new System.Drawing.Point(223, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 20);
+            this.label3.Size = new System.Drawing.Size(36, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "Cupo";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(266, 73);
+            this.label4.Location = new System.Drawing.Point(223, 55);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 20);
+            this.label4.Size = new System.Drawing.Size(60, 15);
             this.label4.TabIndex = 6;
             this.label4.Text = "Id materia";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(266, 146);
+            this.label5.Location = new System.Drawing.Point(223, 110);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 20);
+            this.label5.Size = new System.Drawing.Size(69, 15);
             this.label5.TabIndex = 7;
             this.label5.Text = "Id comision";
             // 
             // txtCupo
             // 
             this.txtCupo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCupo.Location = new System.Drawing.Point(372, 4);
-            this.txtCupo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCupo.Location = new System.Drawing.Point(316, 3);
             this.txtCupo.Name = "txtCupo";
-            this.txtCupo.Size = new System.Drawing.Size(193, 27);
+            this.txtCupo.Size = new System.Drawing.Size(178, 23);
             this.txtCupo.TabIndex = 8;
             // 
             // txtidMateria
             // 
             this.txtidMateria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtidMateria.Location = new System.Drawing.Point(372, 77);
-            this.txtidMateria.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtidMateria.Location = new System.Drawing.Point(316, 58);
             this.txtidMateria.Name = "txtidMateria";
-            this.txtidMateria.Size = new System.Drawing.Size(193, 27);
+            this.txtidMateria.Size = new System.Drawing.Size(178, 23);
             this.txtidMateria.TabIndex = 9;
             // 
             // txtIdComision
             // 
             this.txtIdComision.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtIdComision.Location = new System.Drawing.Point(372, 150);
-            this.txtIdComision.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtIdComision.Location = new System.Drawing.Point(316, 113);
             this.txtIdComision.Name = "txtIdComision";
-            this.txtIdComision.Size = new System.Drawing.Size(193, 27);
+            this.txtIdComision.Size = new System.Drawing.Size(178, 23);
             this.txtIdComision.TabIndex = 10;
             // 
             // btnAceptar
             // 
             this.btnAceptar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAceptar.Location = new System.Drawing.Point(81, 207);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAceptar.Location = new System.Drawing.Point(68, 156);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(179, 36);
+            this.btnAceptar.Size = new System.Drawing.Size(149, 26);
             this.btnAceptar.TabIndex = 11;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancelar.Location = new System.Drawing.Point(372, 207);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancelar.Location = new System.Drawing.Point(316, 156);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(193, 36);
+            this.btnCancelar.Size = new System.Drawing.Size(178, 26);
             this.btnCancelar.TabIndex = 12;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // CursoDesktop
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 265);
+            this.ClientSize = new System.Drawing.Size(523, 199);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CursoDesktop";
             this.Text = "CursoDesktop";
             this.tableLayoutPanel1.ResumeLayout(false);

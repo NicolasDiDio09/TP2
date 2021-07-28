@@ -114,13 +114,12 @@ namespace UI.Desktop
         public override bool Validar()
         {
 
-            bool b2 = string.IsNullOrEmpty(this.txtIdCurso.Text);
             bool b3 = string.IsNullOrEmpty(this.txtAnio.Text);
             bool b4 = string.IsNullOrEmpty(this.txtCupo.Text);
             bool b5 = string.IsNullOrEmpty(this.txtIdComision.Text);
             bool b6 = string.IsNullOrEmpty(this.txtidMateria.Text);
 
-            if (b2 == false && b3 == false && b4 == false && b5 == false && b6 == false)
+            if (b3 == false && b4 == false && b5 == false && b6 == false)
             {
                 return true;
             }
