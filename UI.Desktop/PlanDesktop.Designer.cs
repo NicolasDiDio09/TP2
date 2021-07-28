@@ -81,6 +81,7 @@ namespace UI.Desktop
             this.txtId.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtId.Location = new System.Drawing.Point(226, 3);
             this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(217, 23);
             this.txtId.TabIndex = 1;
             this.txtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

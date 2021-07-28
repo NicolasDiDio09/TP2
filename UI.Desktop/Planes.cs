@@ -73,5 +73,10 @@ namespace UI.Desktop
         {
             this.Listar();
         }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
