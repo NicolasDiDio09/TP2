@@ -32,9 +32,10 @@ namespace UI.Desktop
             this.mnsPrincipal = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbmMaterias = new System.Windows.Forms.Button();
             this.btnAbmComisiones = new System.Windows.Forms.Button();
-            this.altaUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAbmPlanes = new System.Windows.Forms.Button();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,9 +61,15 @@ namespace UI.Desktop
             // mnuSalir
             // 
             this.mnuSalir.Name = "mnuSalir";
-            this.mnuSalir.Size = new System.Drawing.Size(180, 22);
+            this.mnuSalir.Size = new System.Drawing.Size(96, 22);
             this.mnuSalir.Text = "Salir";
             this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
+            // 
+            // altaUsuariosToolStripMenuItem
+            // 
+            this.altaUsuariosToolStripMenuItem.Name = "altaUsuariosToolStripMenuItem";
+            this.altaUsuariosToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.altaUsuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // btnAbmMaterias
             // 
@@ -84,17 +91,22 @@ namespace UI.Desktop
             this.btnAbmComisiones.UseVisualStyleBackColor = true;
             this.btnAbmComisiones.Click += new System.EventHandler(this.btnAbmComisiones_Click);
             // 
-            // altaUsuariosToolStripMenuItem
+            // btnAbmPlanes
             // 
-            this.altaUsuariosToolStripMenuItem.Name = "altaUsuariosToolStripMenuItem";
-            this.altaUsuariosToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.altaUsuariosToolStripMenuItem.Text = "Usuarios";
+            this.btnAbmPlanes.Location = new System.Drawing.Point(0, 244);
+            this.btnAbmPlanes.Name = "btnAbmPlanes";
+            this.btnAbmPlanes.Size = new System.Drawing.Size(800, 23);
+            this.btnAbmPlanes.TabIndex = 7;
+            this.btnAbmPlanes.Text = "abm planes";
+            this.btnAbmPlanes.UseVisualStyleBackColor = true;
+            this.btnAbmPlanes.Click += new System.EventHandler(this.btnAbmPlanes_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAbmPlanes);
             this.Controls.Add(this.btnAbmComisiones);
             this.Controls.Add(this.btnAbmMaterias);
             this.Controls.Add(this.mnsPrincipal);
@@ -120,5 +132,6 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnAbmMaterias;
         private System.Windows.Forms.Button btnAbmComisiones;
         private System.Windows.Forms.ToolStripMenuItem altaUsuariosToolStripMenuItem;
+        private System.Windows.Forms.Button btnAbmPlanes;
     }
 }

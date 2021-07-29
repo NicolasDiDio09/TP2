@@ -66,7 +66,7 @@ namespace Data.Database
             {
                 this.CloseConnection();
             }
-            return Planes;
+            return planes;
         }
 
         public Plan GetOne(int ID)
