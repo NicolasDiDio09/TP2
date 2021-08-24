@@ -24,6 +24,8 @@ namespace UI.Desktop
             Modo = modo;
         }
 
+        public Business.Entities.Usuario UsuarioActual { get; set; }
+
         public UsuarioDesktop(int ID, ModoForm modo) : this()
         {
             UsuarioLogic user = new UsuarioLogic();
@@ -34,7 +36,7 @@ namespace UI.Desktop
             MapearDeDatos();
         }
 
-        public Business.Entities.Usuario UsuarioActual { get; set; }
+        
 
         public override void MapearDeDatos()
         {
