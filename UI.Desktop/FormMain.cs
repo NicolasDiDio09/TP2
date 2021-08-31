@@ -54,5 +54,11 @@ namespace UI.Desktop
             Planes p = new Planes();
             p.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Modulos m = new Modulos();
+            m.ShowDialog();
+        }
     }
 }
