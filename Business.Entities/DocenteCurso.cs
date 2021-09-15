@@ -12,7 +12,14 @@ namespace Business.Entities
         public int IDCurso { get; set; }
 
         public int IDDocente { get; set; }
+        
+        public Cargos cargo { get; set; }
 
-        public int Cargo { get; set; }
+        public enum Cargos 
+        {
+            Profesor = 1,
+            Auxiliar = 2
+        }
+
     }
 }

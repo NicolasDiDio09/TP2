@@ -36,6 +36,7 @@ namespace UI.Desktop
             this.btnAbmMaterias = new System.Windows.Forms.Button();
             this.btnAbmComisiones = new System.Windows.Forms.Button();
             this.btnAbmPlanes = new System.Windows.Forms.Button();
+            this.tsbDocentesCursos = new System.Windows.Forms.Button();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +71,7 @@ namespace UI.Desktop
             this.altaUsuariosToolStripMenuItem.Name = "altaUsuariosToolStripMenuItem";
             this.altaUsuariosToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.altaUsuariosToolStripMenuItem.Text = "Usuarios";
+            this.altaUsuariosToolStripMenuItem.Click += new System.EventHandler(this.altaUsuariosToolStripMenuItem_Click);
             // 
             // btnAbmMaterias
             // 
@@ -101,11 +103,22 @@ namespace UI.Desktop
             this.btnAbmPlanes.UseVisualStyleBackColor = true;
             this.btnAbmPlanes.Click += new System.EventHandler(this.btnAbmPlanes_Click);
             // 
+            // tsbDocentesCursos
+            // 
+            this.tsbDocentesCursos.Location = new System.Drawing.Point(340, 305);
+            this.tsbDocentesCursos.Name = "tsbDocentesCursos";
+            this.tsbDocentesCursos.Size = new System.Drawing.Size(133, 23);
+            this.tsbDocentesCursos.TabIndex = 9;
+            this.tsbDocentesCursos.Text = "DocentesCursos";
+            this.tsbDocentesCursos.UseVisualStyleBackColor = true;
+            this.tsbDocentesCursos.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tsbDocentesCursos);
             this.Controls.Add(this.btnAbmPlanes);
             this.Controls.Add(this.btnAbmComisiones);
             this.Controls.Add(this.btnAbmMaterias);
@@ -133,5 +146,6 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnAbmComisiones;
         private System.Windows.Forms.ToolStripMenuItem altaUsuariosToolStripMenuItem;
         private System.Windows.Forms.Button btnAbmPlanes;
+        private System.Windows.Forms.Button tsbDocentesCursos;
     }
 }

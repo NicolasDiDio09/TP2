@@ -11,36 +11,6 @@ namespace Data.Database
 {
     public class MateriasAdapter : Adapter
     {
-        private static List<Materia> _Materias;
-
-        private static List<Materia> Materias
-        {
-            get
-            {
-                if (_Materias == null)
-                {
-                    _Materias = new List<Business.Entities.Materia>();
-                    Business.Entities.Materia mater;
-                    mater = new Business.Entities.Materia();
-                    mater.ID = 1;
-                    mater.State = Business.Entities.BusinessEntity.States.Unmodified;
-                    mater.DescMateria= ".Net";
-                    mater.HSSemanales= 4;
-                    mater.HSTotales = 144;
-                    _Materias.Add(mater);
-
-                    mater = new Business.Entities.Materia();
-                    mater.ID = 2;
-                    mater.State = Business.Entities.BusinessEntity.States.Unmodified;
-                    mater.DescMateria = "Algoritmo";
-                    mater.HSSemanales = 4;
-                    mater.HSTotales = 144;
-                    _Materias.Add(mater);
-
-                }
-                return _Materias;
-            }
-        }
 
         public List<Materia> GetAll()
         {

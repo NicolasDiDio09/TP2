@@ -18,6 +18,18 @@ namespace UI.Desktop
         public DocenteCursoDesktop()
         {
             InitializeComponent();
+            Mostrardatos();
+        }
+
+        private void Mostrardatos()
+        {
+
+            
+
+            Business.Logic.ComisionLogic comision = new ComisionLogic();
+            cbxComision.DataSource = comision.GetAll();
+            cbxComision.DisplayMember = "desc_comision";
+            cbxComision.ValueMember = "id_comision";
         }
 
         public DocenteCursoDesktop(ModoForm modo) : this()
@@ -27,11 +39,30 @@ namespace UI.Desktop
 
         public Business.Entities.DocenteCurso DocenteCursoActual { get; set; }
 
-        public DocenteCursoDesktop(int ID, ModoForm modo) : this()
+        public DocenteCursoDesktop(int id, ModoForm modo) : this()
         {
-            
-            MapearDeDatos();
+            DocenteCursoLogic dc = new DocenteCursoLogic();
+            Modo = modo;
+
+            DocenteCursoActual = dc.GetOne(id);
+            this.MapearDeDatos();
         }
 
+        
+        public override void MapearDeDatos()
+        {
+            this.txtIDDictado.Text = this.DocenteCursoActual.ID.ToString();
+            Business.Logic.MateriaLogic materia = new MateriaLogic();
+            cbxMateria.DataSource = materia.GetAll();
+            cbxMateria.DisplayMember = "desc_materia";
+            cbxMateria.ValueMember = "id_materia";
+
+            int idMateria = (int)cbxMateria.SelectedValue;
+
+            DocenteCursoLogic dcl = new DocenteCursoLogic();
+            dcl.BuscarComision(idMateria);
+            //Continuar...
+        }
+        
     }
 }

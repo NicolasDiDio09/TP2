@@ -54,5 +54,17 @@ namespace UI.Desktop
             Planes p = new Planes();
             p.ShowDialog();
         }
+
+        private void altaUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Usuarios users = new Usuarios();
+            users.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DocenteCurso dc = new DocenteCurso();
+            dc.ShowDialog();
+        }
     }
 }

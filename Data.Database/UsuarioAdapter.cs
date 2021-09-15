@@ -183,8 +183,7 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
                 "insert into usuarios(nombre_usuario,clave,habilitado,nombre,apellido,email) " +
-                "Values(@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email) " +
-                "selected @@identity", sqlConn);
+                "Values(@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email) " ,sqlConn);
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
