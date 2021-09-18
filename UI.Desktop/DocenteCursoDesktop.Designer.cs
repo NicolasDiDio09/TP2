@@ -40,8 +40,8 @@ namespace UI.Desktop
             this.cbxMateria = new System.Windows.Forms.ComboBox();
             this.cbxComision = new System.Windows.Forms.ComboBox();
             this.cbxCargo = new System.Windows.Forms.ComboBox();
-            this.btCancelar = new System.Windows.Forms.Button();
-            this.btAceptar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.tlDocenteCursoDesktop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,8 +61,8 @@ namespace UI.Desktop
             this.tlDocenteCursoDesktop.Controls.Add(this.cbxMateria, 1, 2);
             this.tlDocenteCursoDesktop.Controls.Add(this.cbxComision, 1, 4);
             this.tlDocenteCursoDesktop.Controls.Add(this.cbxCargo, 1, 5);
-            this.tlDocenteCursoDesktop.Controls.Add(this.btCancelar, 2, 6);
-            this.tlDocenteCursoDesktop.Controls.Add(this.btAceptar, 1, 6);
+            this.tlDocenteCursoDesktop.Controls.Add(this.btnCancelar, 2, 6);
+            this.tlDocenteCursoDesktop.Controls.Add(this.btnAceptar, 1, 6);
             this.tlDocenteCursoDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlDocenteCursoDesktop.Location = new System.Drawing.Point(0, 0);
             this.tlDocenteCursoDesktop.Name = "tlDocenteCursoDesktop";
@@ -163,23 +163,23 @@ namespace UI.Desktop
             this.cbxCargo.Size = new System.Drawing.Size(305, 23);
             this.cbxCargo.TabIndex = 15;
             // 
-            // btCancelar
+            // btnCancelar
             // 
-            this.btCancelar.Location = new System.Drawing.Point(447, 229);
-            this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btCancelar.TabIndex = 11;
-            this.btCancelar.Text = "Cancelar";
-            this.btCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Location = new System.Drawing.Point(447, 229);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // btAceptar
+            // btnAceptar
             // 
-            this.btAceptar.Location = new System.Drawing.Point(136, 229);
-            this.btAceptar.Name = "btAceptar";
-            this.btAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btAceptar.TabIndex = 10;
-            this.btAceptar.Text = "Aceptar";
-            this.btAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Location = new System.Drawing.Point(136, 229);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 10;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
             // 
             // DocenteCursoDesktop
             // 
@@ -204,8 +204,8 @@ namespace UI.Desktop
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtIDDictado;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btAceptar;
-        private System.Windows.Forms.Button btCancelar;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cbxDocente;
         private System.Windows.Forms.ComboBox cbxMateria;
         private System.Windows.Forms.ComboBox cbxComision;

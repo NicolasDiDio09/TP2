@@ -37,9 +37,14 @@ namespace Business.Logic
             docenteCursoData.Delete(id);
         }
 
-        public Comision BuscarComision(int idMateria)
+        public List<Comision> BuscarComisiones(int idMateria)
         {
-            return docenteCursoData.buscarComision(idMateria);
+            return docenteCursoData.buscarComisiones(idMateria);
+        }
+
+        public Curso BuscarCurso(int idMateria,int idComision)
+        {
+            return docenteCursoData.BuscarCurso(idMateria, idComision);
         }
     }
 }

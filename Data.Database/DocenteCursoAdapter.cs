@@ -187,38 +187,74 @@ namespace Data.Database
             dc.State = BusinessEntity.States.Unmodified;
         }
 
-        public Comision buscarComision(int idMateria)
+        public List<Comision> buscarComisiones(int idMateria)
         {
-            Comision comi = new Comision();
+            List<Comision> comisions = new List<Comision>();
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdBuscar = new SqlCommand("select id_comision,desc_comision,anio_especialidad,id_plan from cursos c" +
+                SqlCommand cmdBuscarComision = new SqlCommand("select id_comision,desc_comision,anio_especialidad,id_plan from cursos c" +
                                                         "inner join on comisiones co on c.id_comision = co.comision" +
                                                         "where id_materia=@idMateria;"
                                                         );
-                cmdBuscar.Parameters.Add("@id", SqlDbType.Int).Value = idMateria;
-                SqlDataReader drComision = cmdBuscar.ExecuteReader();
+                cmdBuscarComision.Parameters.Add("@id", SqlDbType.Int).Value = idMateria;
+                SqlDataReader drComision = cmdBuscarComision.ExecuteReader();
                 while (drComision.Read())
                 {
+                    Comision comi = new Comision();
                     comi.ID = (int)drComision["id_comision"];
                     comi.DescComision = (string)drComision["desc_comision"];
                     comi.AnioEspecialidad = (int)drComision["anio_especialidad"];
-                    comi.IdPlan = (int)drComision["id_plan"];  
+                    comi.IdPlan = (int)drComision["id_plan"];
+                    comisions.Add(comi);
                 }
                 drComision.Close();
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al no se encontro el curso", Ex);
+                Exception ExcepcionManejada = new Exception("Error, no se encontraron comisiones para esa materia", Ex);
                 throw ExcepcionManejada;
             }
             finally
             {
                 this.CloseConnection();
             }
-            return comi;
+            return comisions;
         }
 
+        public Curso BuscarCurso(int idMateria,int idComision)
+        {
+            Curso curso = new Curso();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdBuscarCurso = new SqlCommand  ("Select * from cursos c" +
+                                                             "where id_materia=@idMateria and id_comision=@idComision"
+                                                            );
+                cmdBuscarCurso.Parameters.Add("@idMateria", SqlDbType.Int).Value = idMateria;
+                cmdBuscarCurso.Parameters.Add("@idComision", SqlDbType.Int).Value = idComision;
+                SqlDataReader drCurso = cmdBuscarCurso.ExecuteReader();
+                while (drCurso.Read())
+                {
+                    curso.ID = (int)drCurso["id_curso"];
+                    curso.IDComision = (int)drCurso["id_comision"];
+                    curso.IDMateria = (int)drCurso["id_materia"];
+                    curso.Cupo = (int)drCurso["cupo"];
+                    curso.AnioCalendario = (string)drCurso["anio_calendario"];
+                }
+                drCurso.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error, no se encontraron cursos para esa comision y materia", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+            return curso;
+        }
     }
 }
