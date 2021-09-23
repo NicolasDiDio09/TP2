@@ -194,7 +194,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdBuscarComision = new SqlCommand("select id_comision,desc_comision,anio_especialidad,id_plan from cursos c" +
-                                                        "inner join on comisiones co on c.id_comision = co.comision" +
+                                                        "inner join comisiones co on c.id_comision = co.comision" +
                                                         "where id_materia=@idMateria;"
                                                         );
                 cmdBuscarComision.Parameters.Add("@id", SqlDbType.Int).Value = idMateria;

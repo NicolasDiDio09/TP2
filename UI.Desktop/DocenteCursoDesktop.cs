@@ -23,13 +23,12 @@ namespace UI.Desktop
 
         private void Mostrardatos()
         {
-
             
-
             Business.Logic.ComisionLogic comision = new ComisionLogic();
             cbxComision.DataSource = comision.GetAll();
             cbxComision.DisplayMember = "desc_comision";
             cbxComision.ValueMember = "id_comision";
+            
         }
 
         public DocenteCursoDesktop(ModoForm modo) : this()
@@ -66,7 +65,7 @@ namespace UI.Desktop
             DocenteCursoLogic dcl = new DocenteCursoLogic();
             cbxComision.DataSource = dcl.BuscarComisiones(idMateria);
             cbxComision.DisplayMember = "desc_comision";
-            cbxComision.ValueMember = "id_comision";
+            cbxComision.ValueMember = "id_comision";                 
 
             //Mapeando el cargo
             cbxCargo.DataSource = DocenteCursoActual.cargo;
