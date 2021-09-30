@@ -37,6 +37,7 @@ namespace UI.Desktop
             this.btnAbmComisiones = new System.Windows.Forms.Button();
             this.btnAbmPlanes = new System.Windows.Forms.Button();
             this.tsbDocentesCursos = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,11 +114,22 @@ namespace UI.Desktop
             this.tsbDocentesCursos.UseVisualStyleBackColor = true;
             this.tsbDocentesCursos.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(357, 398);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tsbDocentesCursos);
             this.Controls.Add(this.btnAbmPlanes);
             this.Controls.Add(this.btnAbmComisiones);
@@ -147,5 +159,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem altaUsuariosToolStripMenuItem;
         private System.Windows.Forms.Button btnAbmPlanes;
         private System.Windows.Forms.Button tsbDocentesCursos;
+        private System.Windows.Forms.Button button1;
     }
 }
