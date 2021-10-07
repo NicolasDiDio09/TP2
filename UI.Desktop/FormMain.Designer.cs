@@ -36,6 +36,7 @@ namespace UI.Desktop
             this.btnAbmMaterias = new System.Windows.Forms.Button();
             this.btnAbmComisiones = new System.Windows.Forms.Button();
             this.btnAbmPlanes = new System.Windows.Forms.Button();
+            this.btnAbmModulos = new System.Windows.Forms.Button();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,11 +102,22 @@ namespace UI.Desktop
             this.btnAbmPlanes.UseVisualStyleBackColor = true;
             this.btnAbmPlanes.Click += new System.EventHandler(this.btnAbmPlanes_Click);
             // 
+            // btnAbmModulos
+            // 
+            this.btnAbmModulos.Location = new System.Drawing.Point(0, 332);
+            this.btnAbmModulos.Name = "btnAbmModulos";
+            this.btnAbmModulos.Size = new System.Drawing.Size(800, 23);
+            this.btnAbmModulos.TabIndex = 9;
+            this.btnAbmModulos.Text = "abm Modulos";
+            this.btnAbmModulos.UseVisualStyleBackColor = true;
+            this.btnAbmModulos.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAbmModulos);
             this.Controls.Add(this.btnAbmPlanes);
             this.Controls.Add(this.btnAbmComisiones);
             this.Controls.Add(this.btnAbmMaterias);
@@ -133,5 +145,6 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnAbmComisiones;
         private System.Windows.Forms.ToolStripMenuItem altaUsuariosToolStripMenuItem;
         private System.Windows.Forms.Button btnAbmPlanes;
+        private System.Windows.Forms.Button btnAbmModulos;
     }
 }

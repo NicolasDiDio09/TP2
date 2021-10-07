@@ -8,20 +8,10 @@ namespace Business.Entities
 {
     public class Modulo: BusinessEntity
     {
-    private string _descripcion;
 
+        public string DescModulo { get; set; }
 
-    public string Descripcion
-        {
-            get
-            {
-                return _descripcion;
-            }
-            set
-            {
-                _descripcion = value;
-            }
-        }
+        public string Ejecuta { get; set; }
 
 
 
