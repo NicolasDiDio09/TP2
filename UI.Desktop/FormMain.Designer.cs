@@ -71,6 +71,7 @@ namespace UI.Desktop
             this.altaUsuariosToolStripMenuItem.Name = "altaUsuariosToolStripMenuItem";
             this.altaUsuariosToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.altaUsuariosToolStripMenuItem.Text = "Usuarios";
+            this.altaUsuariosToolStripMenuItem.Click += new System.EventHandler(this.altaUsuariosToolStripMenuItem_Click);
             // 
             // btnAbmMaterias
             // 

@@ -29,7 +29,7 @@ namespace UI.Desktop
             catch (FormatException fe)
             {
                 MessageBox.Show("Error al recuperar la lista de materias");
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", fe);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias", fe);
                 throw ExcepcionManejada;
             }
         }

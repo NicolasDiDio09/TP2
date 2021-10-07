@@ -32,7 +32,7 @@ namespace UI.Desktop
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             
-
+            //refactorar el logeo
             Business.Logic.UsuarioLogic ul = new Business.Logic.UsuarioLogic();
             List<Business.Entities.Usuario> users = ul.GetAll();
 
