@@ -33,11 +33,11 @@ namespace UI.Desktop
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.txtIdEspecialidad = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.cbxEspecialidad = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,11 +49,11 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtId, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtDescripcion, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtIdEspecialidad, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.cbxEspecialidad, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -94,15 +94,6 @@ namespace UI.Desktop
             this.txtDescripcion.Size = new System.Drawing.Size(217, 23);
             this.txtDescripcion.TabIndex = 2;
             this.txtDescripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtIdEspecialidad
-            // 
-            this.txtIdEspecialidad.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtIdEspecialidad.Location = new System.Drawing.Point(226, 75);
-            this.txtIdEspecialidad.Name = "txtIdEspecialidad";
-            this.txtIdEspecialidad.Size = new System.Drawing.Size(217, 23);
-            this.txtIdEspecialidad.TabIndex = 3;
-            this.txtIdEspecialidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -148,6 +139,14 @@ namespace UI.Desktop
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // cbxEspecialidad
+            // 
+            this.cbxEspecialidad.FormattingEnabled = true;
+            this.cbxEspecialidad.Location = new System.Drawing.Point(226, 75);
+            this.cbxEspecialidad.Name = "cbxEspecialidad";
+            this.cbxEspecialidad.Size = new System.Drawing.Size(217, 23);
+            this.cbxEspecialidad.TabIndex = 9;
+            // 
             // PlanDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -168,10 +167,10 @@ namespace UI.Desktop
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.TextBox txtIdEspecialidad;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.ComboBox cbxEspecialidad;
     }
 }

@@ -17,6 +17,10 @@ namespace UI.Desktop
         public PlanDesktop()
         {
             InitializeComponent();
+            Business.Logic.EspecialidadLogic el = new EspecialidadLogic();
+            cbxEspecialidad.DataSource = el.GetAll();
+            cbxEspecialidad.DisplayMember = "DescEspecialidad";
+            cbxEspecialidad.ValueMember = "ID";
         }
 
         public PlanDesktop(ModoForm modo) : this()
@@ -39,7 +43,7 @@ namespace UI.Desktop
         {
             this.txtId.Text = this.PlanActual.ID.ToString();
             this.txtDescripcion.Text = this.PlanActual.DescPlan.ToString();
-            this.txtIdEspecialidad.Text = this.PlanActual.IDEspecialidad.ToString();
+            //this.txtIdEspecialidad.Text = this.PlanActual.IDEspecialidad.ToString();
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -72,7 +76,7 @@ namespace UI.Desktop
                     int id = 0;
                     this.PlanActual.ID = id;
                     this.PlanActual.DescPlan = this.txtDescripcion.Text;
-                    this.PlanActual.IDEspecialidad = int.Parse(this.txtIdEspecialidad.Text);
+                    this.PlanActual.IDEspecialidad = Int32.Parse(this.cbxEspecialidad.SelectedValue.ToString());
                     PlanActual.State = BusinessEntity.States.New;
                     break;
 
@@ -82,7 +86,7 @@ namespace UI.Desktop
                     PlanActual = pll;
                     this.PlanActual.ID = int.Parse(this.txtId.Text);
                     this.PlanActual.DescPlan = this.txtDescripcion.Text;
-                    this.PlanActual.IDEspecialidad = int.Parse(this.txtIdEspecialidad.Text);
+                    this.PlanActual.IDEspecialidad = Int32.Parse(this.cbxEspecialidad.SelectedValue.ToString());
                     PlanActual.State = BusinessEntity.States.Modified;
                     break;
 
@@ -109,9 +113,9 @@ namespace UI.Desktop
         {
 
             bool b2 = string.IsNullOrEmpty(this.txtDescripcion.Text);
-            bool b3 = string.IsNullOrEmpty(this.txtIdEspecialidad.Text);
+            //bool b3 = string.IsNullOrEmpty(this.txtIdEspecialidad.Text);
 
-            if (b2 == false && b3 == false)
+            if (b2 == false /*&& b3 == false*/)
             {
                 return true;
             }
