@@ -100,7 +100,9 @@ namespace UI.Desktop
             this.dgvPlanes.Location = new System.Drawing.Point(0, 25);
             this.dgvPlanes.MultiSelect = false;
             this.dgvPlanes.Name = "dgvPlanes";
+            this.dgvPlanes.ReadOnly = true;
             this.dgvPlanes.RowTemplate.Height = 25;
+            this.dgvPlanes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlanes.Size = new System.Drawing.Size(433, 384);
             this.dgvPlanes.TabIndex = 1;
             // 
@@ -116,12 +118,14 @@ namespace UI.Desktop
             this.descripcion.DataPropertyName = "DescPlan";
             this.descripcion.HeaderText = "Descripcion";
             this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
             // 
             // idespecialidad
             // 
             this.idespecialidad.DataPropertyName = "IDEspecialidad";
             this.idespecialidad.HeaderText = "IDEspecialidad";
             this.idespecialidad.Name = "idespecialidad";
+            this.idespecialidad.ReadOnly = true;
             // 
             // btnActualizar
             // 
