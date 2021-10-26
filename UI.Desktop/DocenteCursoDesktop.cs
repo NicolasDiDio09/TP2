@@ -65,10 +65,10 @@ namespace UI.Desktop
             DocenteCursoLogic dcl = new DocenteCursoLogic();
             cbxComision.DataSource = dcl.BuscarComisiones(idMateria);
             cbxComision.DisplayMember = "desc_comision";
-            cbxComision.ValueMember = "id_comision";                 
+            cbxComision.ValueMember = "id_comision";
 
             //Mapeando el cargo
-            cbxCargo.DataSource = DocenteCursoActual.cargo;
+            cbxCargo.DataSource = Enum.GetValues(typeof(Business.Entities.DocenteCurso.Cargos));
 
             switch (Modo)
             {

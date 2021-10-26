@@ -15,7 +15,7 @@ namespace Business.Entities
         private string _telefono;
         private DateTime _fecha_nac;
         private int _legajo;
-        private int _tipo_persona;
+        private Tipo_personas _tipo_persona;
 
         public string Nombre
         {
@@ -96,7 +96,7 @@ namespace Business.Entities
                 _legajo = value;
             }
         }
-        public int Tipo_persona
+        public Tipo_personas Tipo_persona
         {
             get
             {
@@ -110,9 +110,9 @@ namespace Business.Entities
         public int IDPlan { get; set; }
         public enum Tipo_personas
         {
-            Admin,
-            Docente,
-            Alumno
+            Admin = 1,
+            Docente = 2,
+            Alumno = 3
         }
     }
 }

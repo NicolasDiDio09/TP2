@@ -17,10 +17,13 @@ namespace UI.Desktop
         public PersonaDesktop()
         {
             InitializeComponent();
-            PersonaLogic pl = new PersonaLogic();
+            PlanLogic pl = new PlanLogic();
             cbxPlan.DataSource = pl.GetAll();
             cbxPlan.DisplayMember = "DescPlan";
             cbxPlan.ValueMember = "ID";
+
+            cbxTipoPersona.DataSource = Enum.GetValues(typeof(Business.Entities.Persona.Tipo_personas));
+
         }
         public PersonaDesktop(ModoForm modo) : this()  //constructor con sobrecarga
         {
@@ -36,15 +39,18 @@ namespace UI.Desktop
         }
         public override void MapearDeDatos()
         {
-            this.txtNombre.Text = this.PersonaActual.ID.ToString();
-            this.txtApellido.Text = this.PersonaActual.Apellido.ToString();
-            this.txtDireccion.Text = this.PersonaActual.Direccion.ToString();
+            this.txtID.Text = PersonaActual.ID.ToString();
+            this.txtNombre.Text = this.PersonaActual.Nombre;
+            this.txtApellido.Text = this.PersonaActual.Apellido;
+            this.txtDireccion.Text = this.PersonaActual.Direccion;
             this.txtEmail.Text = this.PersonaActual.Email.ToString();
+            this.txtTelefono.Text = this.PersonaActual.Telefono.ToString();
             this.txtFecha_Nac.Text = this.PersonaActual.Fecha_nac.ToString();
             this.txtLegajo.Text = this.PersonaActual.Legajo.ToString();
-            this.txtTelefono.Text = this.PersonaActual.Telefono.ToString();
-            this.txtTipo_Persona.Text = this.PersonaActual.Tipo_persona.ToString();
-            //this.cbxPlan.Text = this.txtClave.Text;
+            this.cbxTipoPersona.SelectedItem = this.PersonaActual.Tipo_persona;
+            this.cbxPlan.SelectedValue = this.PersonaActual.IDPlan;
+
+            //tipo e idplan ya estan seleccionados por el combo box;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -83,7 +89,7 @@ namespace UI.Desktop
                     DateTime fecha = new DateTime(); //ya que no podia pasar derecho de string a DateTime
                     fecha = DateTime.Parse(this.txtFecha_Nac.Text);
                     this.PersonaActual.Fecha_nac = fecha;
-                    this.PersonaActual.Tipo_persona = int.Parse(this.txtTipo_Persona.Text); //ya que es int
+                    this.PersonaActual.Tipo_persona = (Business.Entities.Persona.Tipo_personas)(this.cbxTipoPersona.SelectedValue);
                     this.PersonaActual.Legajo =int.Parse(this.txtLegajo.Text);
                     this.PersonaActual.IDPlan = int.Parse(this.cbxPlan.SelectedValue.ToString());
                     PersonaActual.State = BusinessEntity.States.New;
@@ -100,11 +106,13 @@ namespace UI.Desktop
                     this.PersonaActual.Direccion = this.txtDireccion.Text;
                     this.PersonaActual.Email = this.txtEmail.Text;
                     this.PersonaActual.Telefono = this.txtTelefono.Text;
+
                     DateTime fechita = new DateTime(); //ya que no podia pasar derecho de string a DateTime
                     fechita = DateTime.Parse(this.txtFecha_Nac.Text);
                     this.PersonaActual.Fecha_nac = fechita;
-                    this.PersonaActual.Tipo_persona = int.Parse(this.txtTipo_Persona.Text); //ya que es int
+
                     this.PersonaActual.Legajo = int.Parse(this.txtLegajo.Text);
+                    this.PersonaActual.Tipo_persona = (Business.Entities.Persona.Tipo_personas)(this.cbxTipoPersona.SelectedValue);
                     this.PersonaActual.IDPlan = int.Parse(cbxPlan.SelectedValue.ToString());
                     PersonaActual.State = BusinessEntity.States.Modified;
                     break;
@@ -130,7 +138,7 @@ namespace UI.Desktop
             bool b6 = string.IsNullOrEmpty(this.txtDireccion.Text);
             bool b7 = string.IsNullOrEmpty(this.txtFecha_Nac.Text);
             bool b8 = string.IsNullOrEmpty(this.txtLegajo.Text.ToString());
-            bool b9 = string.IsNullOrEmpty(this.txtTipo_Persona.Text.ToString());
+            //bool b9 = string.IsNullOrEmpty(this.txtTipo_Persona.Text.ToString());
 
             if (b2 == false && b3 == false && b4 == false && b5 == false && b6 == false && b7 == false)
             {
@@ -143,14 +151,12 @@ namespace UI.Desktop
             }
 
         }
-        private void PersonaDesktop_Load(object sender, EventArgs e)
+
+        public void GuardarCambios()
         {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            MapearADatos();
+            PersonaLogic datosPersonas = new PersonaLogic();
+            datosPersonas.Save(PersonaActual);
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

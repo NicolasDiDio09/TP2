@@ -11,6 +11,7 @@ namespace Data.Database
         //private SqlConnection sqlConnection = new SqlConnection("ConnectionString;");
 
         const string consKeyDefaultCnnString = "ConnStringExpress";
+
         public SqlConnection sqlConn { get; set; }
 
         protected void OpenConnection()

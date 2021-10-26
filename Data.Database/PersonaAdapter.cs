@@ -30,13 +30,15 @@ namespace Data.Database
                     per.Telefono = (string)drPersonas["telefono"];
                     per.Fecha_nac = (DateTime)drPersonas["fecha_nac"];
                     per.Legajo = (int)drPersonas["legajo"];
+                    per.Tipo_persona = (Business.Entities.Persona.Tipo_personas)drPersonas["tipo_persona"];
+                    per.IDPlan = (int)drPersonas["id_plan"];
                     personas.Add(per);
                 }
                 drPersonas.Close();
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Comisiones", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Personas", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -57,7 +59,7 @@ namespace Data.Database
                 SqlDataReader drPersonas = cmdPersonas.ExecuteReader(); //creo una nueva instancia de dataReader llamada "drPersonas" y le asigno cmdPersonas.ExecuteReader().
                 if (drPersonas.Read())
                 {
-                    per.ID = (int)drPersonas["id_comision"];
+                    per.ID = (int)drPersonas["id_persona"];
                     per.Nombre = (string)drPersonas["nombre"];
                     per.Apellido = (string)drPersonas["apellido"];
                     per.Direccion = (string)drPersonas["direccion"];
@@ -65,8 +67,8 @@ namespace Data.Database
                     per.Telefono= (string)drPersonas["telefono"];
                     per.Fecha_nac = (DateTime)drPersonas["fecha_nac"];
                     per.Legajo = (int)drPersonas["legajo"];
-                    per.Tipo_persona = (int)drPersonas["tipo_persona"];
-                   
+                    per.Tipo_persona = (Business.Entities.Persona.Tipo_personas)drPersonas["tipo_persona"];
+                    per.IDPlan = (int)drPersonas["id_plan"];
                 }
                 drPersonas.Close();
             }
@@ -86,8 +88,12 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE personas SET nombre=@nombre, apellido=@apellido,direccion=@direccion,email=@email,telefono=@telefono,fecha_nac=@fecha_nac,legajo=@legajo,tipo_persona=@tipo_persona where id_persona=@id", sqlConn);
-                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar).Value = perso.ID;
+                SqlCommand cmdSave = new SqlCommand(
+                    "UPDATE personas SET nombre=@nombre, apellido=@apellido,direccion=@direccion,email=@email," +
+                    "telefono=@telefono,fecha_nac=@fecha_nac,legajo=@legajo,tipo_persona=@tipo_persona,id_plan=@id_plan " +
+                    "where id_persona=@id", sqlConn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = perso.ID;
+                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar,50).Value = perso.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = perso.Apellido;
                 cmdSave.Parameters.Add("@direccion", SqlDbType.VarChar,50).Value = perso.Direccion;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar,50).Value = perso.Email;
@@ -95,11 +101,12 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime).Value = perso.Fecha_nac;
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = perso.Legajo;
                 cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = perso.Tipo_persona;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = perso.IDPlan;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception e)
             {
-                Exception er = new Exception("Error al recuperar los datos de Personas", e);
+                Exception er = new Exception("Error al actualizar los datos de Personas", e);
                 throw er;
             }
             finally
@@ -138,9 +145,9 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                "insert into personas(nombre,apellido,direccion,email,telefono,fecha_nac,legajo,tipo_persona) " +
-                "Values(@nombre,@apellido,@direccion,@email,@telefono,@fecha_nac,@legajo,@tipo_persona)", sqlConn);
-                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar).Value = pers.ID;
+                "insert into personas(nombre,apellido,direccion,email,telefono,fecha_nac,legajo,tipo_persona,id_plan) " +
+                "Values(@nombre,@apellido,@direccion,@email,@telefono,@fecha_nac,@legajo,@tipo_persona,@id_plan)", sqlConn);
+                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar,50).Value = pers.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = pers.Apellido;
                 cmdSave.Parameters.Add("@direccion", SqlDbType.VarChar, 50).Value = pers.Direccion;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = pers.Email;
@@ -148,6 +155,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime).Value = pers.Fecha_nac;
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = pers.Legajo;
                 cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = pers.Tipo_persona;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = pers.IDPlan;
                 cmdSave.ExecuteNonQuery();
 
             }

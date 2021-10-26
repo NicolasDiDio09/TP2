@@ -25,11 +25,16 @@ namespace UI.Desktop
 
         private void FormMain_Shown(object sender, EventArgs e)
         {
+            Personas persona = new Personas();
+            persona.ShowDialog();
+            
+            /*
             FormLogin appLogin = new FormLogin();
             if (appLogin.ShowDialog() != DialogResult.OK)
             {
                 this.Dispose();
             }
+            */
         }
 
         private void btnAbmMaterias_Click(object sender, EventArgs e)

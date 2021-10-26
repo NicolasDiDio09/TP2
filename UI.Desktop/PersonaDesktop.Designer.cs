@@ -46,12 +46,12 @@ namespace UI.Desktop
             this.label8 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.cbxPlan = new System.Windows.Forms.ComboBox();
-            this.labal9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtTipo_Persona = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbxPlan = new System.Windows.Forms.ComboBox();
+            this.labal9 = new System.Windows.Forms.Label();
+            this.cbxTipoPersona = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +83,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.cbxPlan, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.labal9, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.txtTipo_Persona, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cbxTipoPersona, 1, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -97,12 +97,12 @@ namespace UI.Desktop
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.49486F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // txtID
             // 
             this.txtID.Location = new System.Drawing.Point(123, 3);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(100, 23);
             this.txtID.TabIndex = 0;
             // 
@@ -233,6 +233,31 @@ namespace UI.Desktop
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(523, 198);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(100, 23);
+            this.txtTelefono.TabIndex = 20;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(403, 195);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 15);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Telefono";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 256);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 15);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Tipo_Persona";
+            // 
             // cbxPlan
             // 
             this.cbxPlan.FormattingEnabled = true;
@@ -250,37 +275,13 @@ namespace UI.Desktop
             this.labal9.TabIndex = 16;
             this.labal9.Text = "Plan";
             // 
-            // label7
+            // cbxTipoPersona
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 256);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 15);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Tipo_Persona";
-            // 
-            // txtTipo_Persona
-            // 
-            this.txtTipo_Persona.Location = new System.Drawing.Point(123, 259);
-            this.txtTipo_Persona.Name = "txtTipo_Persona";
-            this.txtTipo_Persona.Size = new System.Drawing.Size(100, 23);
-            this.txtTipo_Persona.TabIndex = 7;
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(523, 198);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(100, 23);
-            this.txtTelefono.TabIndex = 20;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(403, 195);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 15);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Telefono";
+            this.cbxTipoPersona.FormattingEnabled = true;
+            this.cbxTipoPersona.Location = new System.Drawing.Point(123, 259);
+            this.cbxTipoPersona.Name = "cbxTipoPersona";
+            this.cbxTipoPersona.Size = new System.Drawing.Size(274, 23);
+            this.cbxTipoPersona.TabIndex = 22;
             // 
             // PersonaDesktop
             // 
@@ -290,7 +291,6 @@ namespace UI.Desktop
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PersonaDesktop";
             this.Text = "PersonaDesktop";
-            this.Load += new System.EventHandler(this.PersonaDesktop_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -307,7 +307,6 @@ namespace UI.Desktop
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtFecha_Nac;
         private System.Windows.Forms.TextBox txtDireccion;
-        private System.Windows.Forms.TextBox txtTipo_Persona;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -322,5 +321,6 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbxTipoPersona;
     }
 }
