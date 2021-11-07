@@ -13,9 +13,9 @@ namespace Business.Entities
 
         public int IDDocente { get; set; }
         
-        public Cargos cargo { get; set; }
+        public cargos Cargo { get; set; }
 
-        public enum Cargos 
+        public enum cargos 
         {
             Profesor = 1,
             Auxiliar = 2

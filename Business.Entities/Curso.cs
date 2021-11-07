@@ -9,7 +9,7 @@ namespace Business.Entities
 {
     public class Curso : BusinessEntity
     {
-        public string AnioCalendario{ get; set; }
+        public int AnioCalendario{ get; set; }
 
         public int Cupo{ get; set; }
 

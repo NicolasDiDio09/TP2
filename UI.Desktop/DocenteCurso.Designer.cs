@@ -100,6 +100,7 @@ namespace UI.Desktop
             this.dgvDocenteCurso.MultiSelect = false;
             this.dgvDocenteCurso.Name = "dgvDocenteCurso";
             this.dgvDocenteCurso.RowTemplate.Height = 25;
+            this.dgvDocenteCurso.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDocenteCurso.Size = new System.Drawing.Size(444, 194);
             this.dgvDocenteCurso.TabIndex = 0;
             // 

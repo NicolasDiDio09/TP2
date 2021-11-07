@@ -187,12 +187,45 @@ namespace Data.Database
             perso.State = BusinessEntity.States.Unmodified;
         }
 
+        public List<Persona> RecuperarProfesores()
+        {
+            List<Persona> profes = new List<Persona>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdPersonas = new SqlCommand(
+                    "select * from personas where tipo_persona = 2", sqlConn); //como param del nuevo command pasamos el objConeccion y el command.text
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+                while (drPersonas.Read())
+                {
+                    Persona profesor = new Persona();
+                    profesor.ID = (int)drPersonas["id_persona"];
+                    profesor.Nombre = (string)drPersonas["nombre"];
+                    profesor.Apellido = (string)drPersonas["apellido"];
+                    profesor.Direccion = (string)drPersonas["direccion"];
+                    profesor.Email = (string)drPersonas["email"];
+                    profesor.Telefono = (string)drPersonas["telefono"];
+                    profesor.Fecha_nac = (DateTime)drPersonas["fecha_nac"];
+                    profesor.Legajo = (int)drPersonas["legajo"];
+                    profesor.Tipo_persona = (Business.Entities.Persona.Tipo_personas)drPersonas["tipo_persona"];
+                    profesor.IDPlan = (int)drPersonas["id_plan"];
+                    profes.Add(profesor);
+                }
+                drPersonas.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de profesores", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
 
+            }
 
-
-
-
-
+            return profes;
+        }
 
     }
 }

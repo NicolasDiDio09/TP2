@@ -42,5 +42,10 @@ namespace Business.Logic
         {
             MateriaData.Delete(id);
         }
+
+        public List<Comision> BuscarComisiones(int idMateria)
+        {
+            return MateriaData.buscarComisiones(idMateria);
+        }
     }
 }

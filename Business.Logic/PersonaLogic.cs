@@ -47,5 +47,10 @@ namespace Business.Logic
         {
             PersonaData.Delete(id);
         }
+
+        public List<Business.Entities.Persona> RecuperarPorfesores()
+        {
+            return PersonaData.RecuperarProfesores();
+        }
     }
 }

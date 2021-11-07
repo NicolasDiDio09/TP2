@@ -16,6 +16,7 @@ namespace Business.Entities
         private DateTime _fecha_nac;
         private int _legajo;
         private Tipo_personas _tipo_persona;
+        private string _ApellidoNombre;
 
         public string Nombre
         {

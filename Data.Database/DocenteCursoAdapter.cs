@@ -23,15 +23,10 @@ namespace Data.Database
                 while (drDocenteCurso.Read())
                 {
                     DocenteCurso dc = new DocenteCurso();
-                    int cargo;
                     dc.ID = (int)drDocenteCurso["id_dictado"];
                     dc.IDCurso = (int)drDocenteCurso["id_curso"];
                     dc.IDDocente = (int)drDocenteCurso["id_docente"];
-                    cargo = (int)drDocenteCurso["cargo"];
-                    if(cargo == 1)
-                    {
-                        dc.cargo = DocenteCurso.Cargos.Profesor;
-                    }
+                    dc.Cargo = (Business.Entities.DocenteCurso.cargos)drDocenteCurso["cargo"];
                     DocentesCursos.Add(dc);
                 }
                 drDocenteCurso.Close();
@@ -57,17 +52,12 @@ namespace Data.Database
                 SqlCommand cmdDocentesCursos = new SqlCommand("Select * from docentes_cursos where id_dictado = @id", sqlConn);
                 cmdDocentesCursos.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drDocenteCurso = cmdDocentesCursos.ExecuteReader();
-                int cargo;
                 if (drDocenteCurso.Read())
                 {
                     dc.ID = (int)drDocenteCurso["id_dictado"];
                     dc.IDCurso = (int)drDocenteCurso["id_curso"];
                     dc.IDDocente = (int)drDocenteCurso["id_docente"];
-                    cargo = (int)drDocenteCurso["cargo"];
-                    if (cargo == 1)
-                    {
-                        dc.cargo = DocenteCurso.Cargos.Profesor;
-                    }
+                    dc.Cargo = (Business.Entities.DocenteCurso.cargos)drDocenteCurso["cargo"];
                 }
                 drDocenteCurso.Close();
             }
@@ -88,19 +78,11 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE docentes_cursos SET id_docente=@id_docente, id_curso=@id_curso, cargo=@hcargo where id_dictado=@id", sqlConn);
+                SqlCommand cmdSave = new SqlCommand("UPDATE docentes_cursos SET id_docente=@id_docente, id_curso=@id_curso, cargo=@cargo where id_dictado=@id", sqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = dc.ID;
                 cmdSave.Parameters.Add("@id_docente", SqlDbType.Int).Value = dc.IDDocente;
                 cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = dc.IDCurso;
-                if(dc.cargo == DocenteCurso.Cargos.Profesor)
-                {
-                    cmdSave.Parameters.Add("@cargo", SqlDbType.Int).Value = 1;
-                }
-                else
-                {
-                    cmdSave.Parameters.Add("@cargo", SqlDbType.Int).Value = 2;
-                }
-                
+                cmdSave.Parameters.Add("@cargo", SqlDbType.Int).Value = dc.Cargo;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -147,16 +129,7 @@ namespace Data.Database
                 "Values(@id_docente,@id_curso,@cargo)", sqlConn);
                 cmdSave.Parameters.Add("@id_docente", SqlDbType.Int).Value = docentecurso.IDDocente;
                 cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = docentecurso.IDCurso;
-
-                if (docentecurso.cargo == DocenteCurso.Cargos.Profesor)
-                {
-                    cmdSave.Parameters.Add("@cargo", SqlDbType.Int).Value = 1;
-                }
-                else
-                {
-                    cmdSave.Parameters.Add("@cargo", SqlDbType.Int).Value = 2;
-                }
-
+                cmdSave.Parameters.Add("@cargo", SqlDbType.Int).Value = docentecurso.Cargo;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -187,50 +160,14 @@ namespace Data.Database
             dc.State = BusinessEntity.States.Unmodified;
         }
 
-        public List<Comision> buscarComisiones(int idMateria)
-        {
-            List<Comision> comisions = new List<Comision>();
-            try
-            {
-                this.OpenConnection();
-                SqlCommand cmdBuscarComision = new SqlCommand("select id_comision,desc_comision,anio_especialidad,id_plan from cursos c" +
-                                                        "inner join comisiones co on c.id_comision = co.comision" +
-                                                        "where id_materia=@idMateria;"
-                                                        );
-                cmdBuscarComision.Parameters.Add("@id", SqlDbType.Int).Value = idMateria;
-                SqlDataReader drComision = cmdBuscarComision.ExecuteReader();
-                while (drComision.Read())
-                {
-                    Comision comi = new Comision();
-                    comi.ID = (int)drComision["id_comision"];
-                    comi.DescComision = (string)drComision["desc_comision"];
-                    comi.AnioEspecialidad = (int)drComision["anio_especialidad"];
-                    comi.IdPlan = (int)drComision["id_plan"];
-                    comisions.Add(comi);
-                }
-                drComision.Close();
-            }
-            catch (Exception Ex)
-            {
-                Exception ExcepcionManejada = new Exception("Error, no se encontraron comisiones para esa materia", Ex);
-                throw ExcepcionManejada;
-            }
-            finally
-            {
-                this.CloseConnection();
-            }
-            return comisions;
-        }
-
         public Curso BuscarCurso(int idMateria,int idComision)
         {
             Curso curso = new Curso();
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdBuscarCurso = new SqlCommand  ("Select * from cursos c" +
-                                                             "where id_materia=@idMateria and id_comision=@idComision"
-                                                            );
+                SqlCommand cmdBuscarCurso = new SqlCommand  (
+                    "select * from cursos where id_materia = @idMateria and id_comision=@idComision;", sqlConn);
                 cmdBuscarCurso.Parameters.Add("@idMateria", SqlDbType.Int).Value = idMateria;
                 cmdBuscarCurso.Parameters.Add("@idComision", SqlDbType.Int).Value = idComision;
                 SqlDataReader drCurso = cmdBuscarCurso.ExecuteReader();
@@ -240,7 +177,7 @@ namespace Data.Database
                     curso.IDComision = (int)drCurso["id_comision"];
                     curso.IDMateria = (int)drCurso["id_materia"];
                     curso.Cupo = (int)drCurso["cupo"];
-                    curso.AnioCalendario = (string)drCurso["anio_calendario"];
+                    curso.AnioCalendario = (int)drCurso["anio_calendario"];
                 }
                 drCurso.Close();
             }

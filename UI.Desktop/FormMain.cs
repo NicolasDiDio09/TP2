@@ -25,8 +25,8 @@ namespace UI.Desktop
 
         private void FormMain_Shown(object sender, EventArgs e)
         {
-            Personas persona = new Personas();
-            persona.ShowDialog();
+            DocenteCurso dc = new DocenteCurso();
+            dc.ShowDialog();
             
             /*
             FormLogin appLogin = new FormLogin();

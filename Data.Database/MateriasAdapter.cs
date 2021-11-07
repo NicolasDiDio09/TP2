@@ -161,5 +161,38 @@ namespace Data.Database
             }
             materia.State = BusinessEntity.States.Unmodified;
         }
+
+        public List<Comision> buscarComisiones(int idMateria)
+        {
+            List<Comision> comisions = new List<Comision>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdBuscarComision = new SqlCommand(
+                    "Select co.id_comision,desc_comision,anio_especialidad,id_plan from cursos cu inner join comisiones co  on cu.id_comision = co.id_comision where id_materia=@id;", sqlConn);
+                cmdBuscarComision.Parameters.Add("@id", SqlDbType.Int).Value = idMateria;
+                SqlDataReader drComision = cmdBuscarComision.ExecuteReader();
+                while (drComision.Read())
+                {
+                    Comision comi = new Comision();
+                    comi.ID = (int)drComision["id_comision"];
+                    comi.DescComision = (string)drComision["desc_comision"];
+                    comi.AnioEspecialidad = (int)drComision["anio_especialidad"];
+                    comi.IdPlan = (int)drComision["id_plan"];
+                    comisions.Add(comi);
+                }
+                drComision.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error, no se encontraron comisiones para esa materia", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return comisions;
+        }
     }
 }
