@@ -72,7 +72,11 @@ namespace UI.Desktop
             this.Listar();
         }
 
+<<<<<<< HEAD
         private void dgvMaterias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+=======
+        private void toolStripContainer1_RightToolStripPanel_Click(object sender, EventArgs e)
+>>>>>>> branch-franco
         {
 
         }
