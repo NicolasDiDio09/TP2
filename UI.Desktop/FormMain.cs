@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business.Entities;
+using Business.Logic;
 
 
 namespace UI.Desktop
@@ -18,6 +20,8 @@ namespace UI.Desktop
             InitializeComponent();
         }
 
+        public int UsuarioID { get; set; }
+
         private void mnuSalir_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -25,45 +29,58 @@ namespace UI.Desktop
 
         private void FormMain_Shown(object sender, EventArgs e)
         {
-            DocenteCurso dc = new DocenteCurso();
-            dc.ShowDialog();
-            
-            /*
             FormLogin appLogin = new FormLogin();
             if (appLogin.ShowDialog() != DialogResult.OK)
             {
                 this.Dispose();
             }
-            */
+            UsuarioID = appLogin.UsurioID;
+            UsuarioLogic ul = new UsuarioLogic();
+            Persona per = ul.BuscaPersona(UsuarioID);
+            if(per.TipoPersona.ToString() != "Admin")
+            {
+                tsmDocentesCursos.Visible = false;
+            }
         }
 
-        private void btnAbmMaterias_Click(object sender, EventArgs e)
-        {
-            Materias mate = new Materias();
-            mate.ShowDialog();
-        }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void btnAbmComisiones_Click(object sender, EventArgs e)
+        private void tsmUsuarios_Click(object sender, EventArgs e)
         {
-            Comisiones comi = new Comisiones();
-            comi.ShowDialog();
+            Usuarios user = new Usuarios(UsuarioID);
+            user.ShowDialog();
         }
 
-        private void btnAbmPlanes_Click(object sender, EventArgs e)
+        private void tsmMaterias_Click(object sender, EventArgs e)
         {
-            Planes p = new Planes();
-            p.ShowDialog();
+            Materias mat = new Materias(UsuarioID);
+            mat.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void tsmDocentesCursos_Click(object sender, EventArgs e)
         {
-            Modulos m = new Modulos();
-            m.ShowDialog();
+            DocenteCurso docenteCurso = new DocenteCurso(UsuarioID);
+            docenteCurso.ShowDialog();
+        }
+
+        private void tsmComisiones_Click(object sender, EventArgs e)
+        {
+            Comisiones com = new Comisiones(UsuarioID);
+            com.ShowDialog();
+        }
+
+        private void tsmPersonas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsmCursos_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

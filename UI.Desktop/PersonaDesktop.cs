@@ -22,7 +22,7 @@ namespace UI.Desktop
             cbxPlan.DisplayMember = "DescPlan";
             cbxPlan.ValueMember = "ID";
 
-            cbxTipoPersona.DataSource = Enum.GetValues(typeof(Business.Entities.Persona.Tipo_personas));
+            cbxTipoPersona.DataSource = Enum.GetValues(typeof(Business.Entities.Persona.tipoPersonas));
 
         }
         public PersonaDesktop(ModoForm modo) : this()  //constructor con sobrecarga
@@ -47,7 +47,7 @@ namespace UI.Desktop
             this.txtTelefono.Text = this.PersonaActual.Telefono.ToString();
             this.txtFecha_Nac.Text = this.PersonaActual.Fecha_nac.ToString();
             this.txtLegajo.Text = this.PersonaActual.Legajo.ToString();
-            this.cbxTipoPersona.SelectedItem = this.PersonaActual.Tipo_persona;
+            this.cbxTipoPersona.SelectedItem = this.PersonaActual.TipoPersona;
             this.cbxPlan.SelectedValue = this.PersonaActual.IDPlan;
 
             //tipo e idplan ya estan seleccionados por el combo box;
@@ -89,7 +89,7 @@ namespace UI.Desktop
                     DateTime fecha = new DateTime(); //ya que no podia pasar derecho de string a DateTime
                     fecha = DateTime.Parse(this.txtFecha_Nac.Text);
                     this.PersonaActual.Fecha_nac = fecha;
-                    this.PersonaActual.Tipo_persona = (Business.Entities.Persona.Tipo_personas)(this.cbxTipoPersona.SelectedValue);
+                    this.PersonaActual.TipoPersona = (Business.Entities.Persona.tipoPersonas)(this.cbxTipoPersona.SelectedValue);
                     this.PersonaActual.Legajo =int.Parse(this.txtLegajo.Text);
                     this.PersonaActual.IDPlan = int.Parse(this.cbxPlan.SelectedValue.ToString());
                     PersonaActual.State = BusinessEntity.States.New;
@@ -112,7 +112,7 @@ namespace UI.Desktop
                     this.PersonaActual.Fecha_nac = fechita;
 
                     this.PersonaActual.Legajo = int.Parse(this.txtLegajo.Text);
-                    this.PersonaActual.Tipo_persona = (Business.Entities.Persona.Tipo_personas)(this.cbxTipoPersona.SelectedValue);
+                    this.PersonaActual.TipoPersona = (Business.Entities.Persona.tipoPersonas)(this.cbxTipoPersona.SelectedValue);
                     this.PersonaActual.IDPlan = int.Parse(cbxPlan.SelectedValue.ToString());
                     PersonaActual.State = BusinessEntity.States.Modified;
                     break;

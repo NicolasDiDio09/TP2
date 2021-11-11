@@ -12,6 +12,7 @@ namespace UI.Desktop
 {
     public partial class ApplicationForm : Form
     {
+        public int UsuairoID { get; set; }
         private ModoForm _modo;
         public ModoForm Modo
         {

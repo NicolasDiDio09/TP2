@@ -43,5 +43,10 @@ namespace Business.Logic
         {
             ComisionData.Delete(id);
         }
+
+        public List<Comision> BuscarComisionesxUsuario(int id)
+        {
+            return ComisionData.BuscarComisionesxUsuario(id);
+        }
     }
 }

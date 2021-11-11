@@ -14,11 +14,19 @@ namespace UI.Desktop
 {
     public partial class Materias : Form
     {
+        public int UsuarioId { get; set; }
         public Materias()
         {
             InitializeComponent();
             this.dgvMaterias.AutoGenerateColumns = false;
         }
+        public Materias(int id)
+        {
+            InitializeComponent();
+            this.dgvMaterias.AutoGenerateColumns = false;
+            UsuarioId = id;
+        }
+
         public void Listar()
         {
             try
@@ -36,7 +44,20 @@ namespace UI.Desktop
 
         private void Materias_Load(object sender, EventArgs e)
         {
-            this.Listar();
+            UsuarioLogic ul = new UsuarioLogic();
+            Persona per = ul.BuscaPersona(UsuarioId);
+
+            if(per.TipoPersona.ToString() == "Admin")
+            {
+                this.Listar();
+            }
+            else
+            {
+                this.Listar();
+                tsbEditar.Visible = false;
+                tsbNuevo.Visible = false;
+                tsbEliminar.Visible = false;
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -70,15 +91,6 @@ namespace UI.Desktop
             MateriaDesktop mat = new MateriaDesktop(id, ModoForm.Baja);
             mat.ShowDialog();
             this.Listar();
-        }
-
-<<<<<<< HEAD
-        private void dgvMaterias_CellContentClick(object sender, DataGridViewCellEventArgs e)
-=======
-        private void toolStripContainer1_RightToolStripPanel_Click(object sender, EventArgs e)
->>>>>>> branch-franco
-        {
-
         }
     }
 }

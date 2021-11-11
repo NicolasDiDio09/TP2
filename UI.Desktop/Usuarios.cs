@@ -14,11 +14,21 @@ namespace UI.Desktop
 {
     public partial class Usuarios : Form
     {
+        public int UsuarioID { get; set; }
+
         public Usuarios()
         {
             InitializeComponent();
             this.dgvUsuarios.AutoGenerateColumns = false;
         }
+
+        public Usuarios(int id)
+        {
+            InitializeComponent();
+            this.dgvUsuarios.AutoGenerateColumns = false;
+            UsuarioID = id;
+        }
+
         public void Listar()
         {
             try
@@ -34,14 +44,48 @@ namespace UI.Desktop
             }
         }
 
+        public void ListarUsuario()
+        {
+            try
+            {
+                tsbNuevo.Visible = false;
+                tsbEliminar.Visible = false;
+                UsuarioLogic ul = new UsuarioLogic();
+                List<Usuario> usuario = new List<Usuario>();
+                usuario.Add(ul.GetOne(UsuarioID));
+                this.dgvUsuarios.DataSource = usuario;
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Error al recuperar la lista de usuarios");
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", fe);
+                throw ExcepcionManejada;
+            }
+        }
+
         private void Usuarios_Load(object sender, EventArgs e)
         {
-            this.Listar();
+            Lista();
+        }
+
+        private void Lista()
+        {
+            UsuarioLogic ul = new UsuarioLogic();
+            Persona perso = ul.BuscaPersona(UsuarioID);
+
+            if (perso.TipoPersona.ToString() == "Admin")
+            {
+                this.Listar();
+            }
+            else
+            {
+                this.ListarUsuario();
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            this.Listar();
+            this.Lista();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -53,7 +97,7 @@ namespace UI.Desktop
         {
             UsuarioDesktop ud = new UsuarioDesktop(ModoForm.Alta);
             ud.ShowDialog();
-            Listar();
+            Lista();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
@@ -61,7 +105,7 @@ namespace UI.Desktop
             int id = ((Business.Entities.Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
             UsuarioDesktop us = new UsuarioDesktop(id, ModoForm.Modicacion);
             us.ShowDialog();
-            Listar();
+            Lista();
 
         }
 
@@ -70,7 +114,7 @@ namespace UI.Desktop
             int id = ((Business.Entities.Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
             UsuarioDesktop us = new UsuarioDesktop(id, ModoForm.Baja);
             us.ShowDialog();
-            Listar();
+            Lista();
         }
 
     }

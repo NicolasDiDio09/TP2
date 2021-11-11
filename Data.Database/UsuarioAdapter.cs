@@ -133,7 +133,9 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE usuarios SET nombre_usuario=@nombre_usuario, clave=@clave, habilitado=@habilitado, nombre=@nombre, apellido=@apellido, email=@email where id_usuario=@id", sqlConn);
+                SqlCommand cmdSave = new SqlCommand(
+                    "UPDATE usuarios SET nombre_usuario=@nombre_usuario, clave=@clave, habilitado=@habilitado, nombre=@nombre, apellido=@apellido, email=@email " +
+                    "where id_usuario=@id", sqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
@@ -218,6 +220,45 @@ namespace Data.Database
                 this.Update(usuario);
             }
             usuario.State = BusinessEntity.States.Unmodified;
+        }
+
+        public Business.Entities.Persona BuscarPersona(int ID)
+        {
+            Persona pers = new Persona();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdBuscaPersona = new SqlCommand(
+                    "select p.id_persona,p.nombre,p.apellido,direccion,p.email,telefono,fecha_nac,legajo,tipo_persona,id_plan from usuarios u " +
+                    "inner join personas p on p.id_persona=u.id_persona " +
+                    "where id_usuario= @id", sqlConn);
+                cmdBuscaPersona.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                SqlDataReader drPersona = cmdBuscaPersona.ExecuteReader();
+                if (drPersona.Read())
+                {
+                    pers.ID = (int)drPersona["id_persona"];
+                    pers.Nombre = (string)drPersona["nombre"];
+                    pers.Apellido = (string)drPersona["apellido"];
+                    pers.Direccion = (string)drPersona["direccion"];
+                    pers.Email = (string)drPersona["email"];
+                    pers.Telefono = (string)drPersona["telefono"];
+                    pers.Fecha_nac = (DateTime)drPersona["fecha_nac"];
+                    pers.Legajo = (int)drPersona["legajo"];
+                    pers.TipoPersona = (Business.Entities.Persona.tipoPersonas)drPersona["tipo_persona"];
+                    pers.IDPlan = (int)drPersona["id_plan"];
+                }
+                drPersona.Close();
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos del usuario", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return pers;
         }
     }
 }

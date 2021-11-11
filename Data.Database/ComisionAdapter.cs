@@ -199,5 +199,44 @@ namespace Data.Database
             }
             comi.State = BusinessEntity.States.Unmodified;
         }
+
+        public List<Comision> BuscarComisionesxUsuario(int id)
+        {
+            List<Comision> comisiones = new List<Comision>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdComisiones = new SqlCommand(
+                    "select co.id_comision,desc_comision,anio_especialidad,co.id_plan from usuarios u " +
+                    "inner join personas p on p.id_persona = u.id_persona " +
+                    "inner join docentes_cursos dc on dc.id_docente=p.id_persona " +
+                    "inner join cursos c on c.id_curso = dc.id_curso " +
+                    "inner join comisiones co on co.id_comision=c.id_comision " +
+                    "where id_usuario = @id", sqlConn);
+                cmdComisiones.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
+                while (drComisiones.Read())
+                {
+                    Comision com = new Comision();
+                    com.ID = (int)drComisiones["id_comision"];
+                    com.DescComision = (string)drComisiones["desc_comision"];
+                    com.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
+                    com.IdPlan = (int)drComisiones["id_plan"];
+                    comisiones.Add(com);
+
+                }
+                drComisiones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Comisiones", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return comisiones;
+        }
     }
 }

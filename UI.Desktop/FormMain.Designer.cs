@@ -32,11 +32,12 @@ namespace UI.Desktop
             this.mnsPrincipal = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
-            this.altaUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnAbmMaterias = new System.Windows.Forms.Button();
-            this.btnAbmComisiones = new System.Windows.Forms.Button();
-            this.btnAbmPlanes = new System.Windows.Forms.Button();
-            this.btnAbmModulos = new System.Windows.Forms.Button();
+            this.tsmUsuarios = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmMaterias = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmComisiones = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDocentesCursos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmCursos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmPersonas = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +45,12 @@ namespace UI.Desktop
             // 
             this.mnsPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
-            this.altaUsuariosToolStripMenuItem});
+            this.tsmUsuarios,
+            this.tsmMaterias,
+            this.tsmComisiones,
+            this.tsmDocentesCursos,
+            this.tsmCursos,
+            this.tsmPersonas});
             this.mnsPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnsPrincipal.Name = "mnsPrincipal";
             this.mnsPrincipal.Size = new System.Drawing.Size(800, 24);
@@ -66,62 +72,53 @@ namespace UI.Desktop
             this.mnuSalir.Text = "Salir";
             this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
             // 
-            // altaUsuariosToolStripMenuItem
-            //
-            this.altaUsuariosToolStripMenuItem.Name = "altaUsuariosToolStripMenuItem";
-            this.altaUsuariosToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.altaUsuariosToolStripMenuItem.Text = "Usuarios";
-            //this.altaUsuariosToolStripMenuItem.Click += new System.EventHandler(this.altaUsuariosToolStripMenuItem_Click);
+            // tsmUsuarios
             // 
-            // btnAbmMaterias
+            this.tsmUsuarios.Name = "tsmUsuarios";
+            this.tsmUsuarios.Size = new System.Drawing.Size(64, 20);
+            this.tsmUsuarios.Text = "Usuarios";
+            this.tsmUsuarios.Click += new System.EventHandler(this.tsmUsuarios_Click);
             // 
-            this.btnAbmMaterias.Location = new System.Drawing.Point(0, 57);
-            this.btnAbmMaterias.Name = "btnAbmMaterias";
-            this.btnAbmMaterias.Size = new System.Drawing.Size(800, 23);
-            this.btnAbmMaterias.TabIndex = 3;
-            this.btnAbmMaterias.Text = "abm materias";
-            this.btnAbmMaterias.UseVisualStyleBackColor = true;
-            this.btnAbmMaterias.Click += new System.EventHandler(this.btnAbmMaterias_Click);
+            // tsmMaterias
             // 
-            // btnAbmComisiones
+            this.tsmMaterias.Name = "tsmMaterias";
+            this.tsmMaterias.Size = new System.Drawing.Size(64, 20);
+            this.tsmMaterias.Text = "Materias";
+            this.tsmMaterias.Click += new System.EventHandler(this.tsmMaterias_Click);
             // 
-            this.btnAbmComisiones.Location = new System.Drawing.Point(0, 151);
-            this.btnAbmComisiones.Name = "btnAbmComisiones";
-            this.btnAbmComisiones.Size = new System.Drawing.Size(800, 23);
-            this.btnAbmComisiones.TabIndex = 5;
-            this.btnAbmComisiones.Text = "abm comisiones";
-            this.btnAbmComisiones.UseVisualStyleBackColor = true;
-            this.btnAbmComisiones.Click += new System.EventHandler(this.btnAbmComisiones_Click);
+            // tsmComisiones
             // 
-            // btnAbmPlanes
+            this.tsmComisiones.Name = "tsmComisiones";
+            this.tsmComisiones.Size = new System.Drawing.Size(81, 20);
+            this.tsmComisiones.Text = "Comisiones";
+            this.tsmComisiones.Click += new System.EventHandler(this.tsmComisiones_Click);
             // 
-            this.btnAbmPlanes.Location = new System.Drawing.Point(0, 244);
-            this.btnAbmPlanes.Name = "btnAbmPlanes";
-            this.btnAbmPlanes.Size = new System.Drawing.Size(800, 23);
-            this.btnAbmPlanes.TabIndex = 7;
-            this.btnAbmPlanes.Text = "abm planes";
-            this.btnAbmPlanes.UseVisualStyleBackColor = true;
-            this.btnAbmPlanes.Click += new System.EventHandler(this.btnAbmPlanes_Click);
+            // tsmDocentesCursos
             // 
-            // btnAbmModulos
+            this.tsmDocentesCursos.Name = "tsmDocentesCursos";
+            this.tsmDocentesCursos.Size = new System.Drawing.Size(104, 20);
+            this.tsmDocentesCursos.Text = "DocentesCursos";
+            this.tsmDocentesCursos.Click += new System.EventHandler(this.tsmDocentesCursos_Click);
             // 
-            this.btnAbmModulos.Location = new System.Drawing.Point(0, 332);
-            this.btnAbmModulos.Name = "btnAbmModulos";
-            this.btnAbmModulos.Size = new System.Drawing.Size(800, 23);
-            this.btnAbmModulos.TabIndex = 9;
-            this.btnAbmModulos.Text = "abm Modulos";
-            this.btnAbmModulos.UseVisualStyleBackColor = true;
-            this.btnAbmModulos.Click += new System.EventHandler(this.button1_Click);
+            // tsmCursos
+            // 
+            this.tsmCursos.Name = "tsmCursos";
+            this.tsmCursos.Size = new System.Drawing.Size(55, 20);
+            this.tsmCursos.Text = "Cursos";
+            this.tsmCursos.Click += new System.EventHandler(this.tsmCursos_Click);
+            // 
+            // tsmPersonas
+            // 
+            this.tsmPersonas.Name = "tsmPersonas";
+            this.tsmPersonas.Size = new System.Drawing.Size(66, 20);
+            this.tsmPersonas.Text = "Personas";
+            this.tsmPersonas.Click += new System.EventHandler(this.tsmPersonas_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnAbmModulos);
-            this.Controls.Add(this.btnAbmPlanes);
-            this.Controls.Add(this.btnAbmComisiones);
-            this.Controls.Add(this.btnAbmMaterias);
             this.Controls.Add(this.mnsPrincipal);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnsPrincipal;
@@ -142,10 +139,11 @@ namespace UI.Desktop
         private System.Windows.Forms.MenuStrip mnsPrincipal;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuSalir;
-        private System.Windows.Forms.Button btnAbmMaterias;
-        private System.Windows.Forms.Button btnAbmComisiones;
-        private System.Windows.Forms.ToolStripMenuItem altaUsuariosToolStripMenuItem;
-        private System.Windows.Forms.Button btnAbmPlanes;
-        private System.Windows.Forms.Button btnAbmModulos;
+        private System.Windows.Forms.ToolStripMenuItem tsmUsuarios;
+        private System.Windows.Forms.ToolStripMenuItem tsmMaterias;
+        private System.Windows.Forms.ToolStripMenuItem tsmComisiones;
+        private System.Windows.Forms.ToolStripMenuItem tsmDocentesCursos;
+        private System.Windows.Forms.ToolStripMenuItem tsmCursos;
+        private System.Windows.Forms.ToolStripMenuItem tsmPersonas;
     }
 }

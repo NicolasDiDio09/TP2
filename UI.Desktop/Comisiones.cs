@@ -14,11 +14,57 @@ namespace UI.Desktop
 {
     public partial class Comisiones : Form
     {
+        public int UsuarioId { get; set; }
         public Comisiones()
         {
             InitializeComponent();
             this.dgvComisiones.AutoGenerateColumns = false;
         }
+
+        public Comisiones(int id)
+        {
+            InitializeComponent();
+            this.dgvComisiones.AutoGenerateColumns = false;
+            UsuarioId = id;
+        }
+
+        private void Comisiones_Load(object sender, EventArgs e)
+        {
+            Lista();
+        }
+
+        private void Lista()
+        {
+            UsuarioLogic ul = new UsuarioLogic();
+            Persona per = ul.BuscaPersona(UsuarioId);
+            if (per.TipoPersona.ToString() == "Admin")
+            {
+                this.Listar();
+            }
+            else
+            {
+                tsbNuevo.Visible = false;
+                tsbEditar.Visible = false;
+                tsbEliminar.Visible = false;
+                ListarComisionesUsuario(UsuarioId);
+            }
+        }
+
+        public void ListarComisionesUsuario(int id)
+        {
+            try
+            {
+                ComisionLogic comi = new ComisionLogic();
+                this.dgvComisiones.DataSource = comi.BuscarComisionesxUsuario(id);
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Error al recuperar la lista de Comisiones");
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Comisiones", fe);
+                throw ExcepcionManejada;
+            }
+        }
+
         public void Listar()
         {
             try
@@ -33,14 +79,10 @@ namespace UI.Desktop
                 throw ExcepcionManejada;
             }
         }
-
-        private void Usuarios_Load(object sender, EventArgs e)
-        {
-            this.Listar();
-        }
+        
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Listar();
+            this.Lista();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -52,7 +94,7 @@ namespace UI.Desktop
         {
             ComisionDesktop cd = new ComisionDesktop();
             cd.ShowDialog();
-            Listar();
+            Lista();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
@@ -60,7 +102,7 @@ namespace UI.Desktop
             int id = ((Business.Entities.Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem).ID;
             ComisionDesktop us = new ComisionDesktop(id, ModoForm.Modicacion);
             us.ShowDialog();
-            Listar();
+            Lista();
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
@@ -68,12 +110,9 @@ namespace UI.Desktop
             int id = ((Business.Entities.Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem).ID;
             ComisionDesktop us = new ComisionDesktop(id, ModoForm.Baja);
             us.ShowDialog();
-            Listar();
+            Lista();
         }
 
-        private void Comisiones_Load(object sender, EventArgs e)
-        {
-            this.Listar();
-        }
+
     }
 }

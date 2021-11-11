@@ -14,13 +14,22 @@ namespace UI.Desktop
 {
     public partial class DocenteCurso : Form
     {
+        public int UsuarioID { get; set; }
         public DocenteCurso()
         {
             InitializeComponent();
             this.dgvDocenteCurso.AutoGenerateColumns = false;
         }
+
+        public DocenteCurso(int id)
+        {
+            InitializeComponent();
+            this.dgvDocenteCurso.AutoGenerateColumns = false;
+            UsuarioID = id;
+        }
         public void Listar()
         {
+            
             try
             {
                 DocenteCursoLogic dc = new DocenteCursoLogic();
@@ -36,12 +45,29 @@ namespace UI.Desktop
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            this.Listar();
+            this.Lista();
         }
 
         private void DocenteCurso_Load(object sender, EventArgs e)
         {
-            this.Listar();
+            this.Lista();
+        }
+
+        private void Lista()
+        {
+            UsuarioLogic ul = new UsuarioLogic();
+            Persona per = ul.BuscaPersona(UsuarioID);
+            if (per.TipoPersona.ToString() == "Admin")
+            {
+                this.Listar();
+            }
+            else
+            {
+                tsbNuevo.Visible = false;
+                tsbEditar.Visible = false;
+                tsbEliminar.Visible = false;
+                dgvDocenteCurso.Visible = false;
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
