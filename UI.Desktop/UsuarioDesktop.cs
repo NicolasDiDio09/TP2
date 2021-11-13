@@ -75,8 +75,7 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     this.btnAceptar.Text = "Guardar";
-                    Usuario Us = new Usuario();
-                    UsuarioActual = Us;
+                    UsuarioActual = new Usuario();
                     int id = 0; 
                     this.UsuarioActual.ID = id;
                     this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
@@ -118,9 +117,36 @@ namespace UI.Desktop
         {
             MapearADatos();
             UsuarioLogic us = new UsuarioLogic();
-            us.Save(UsuarioActual);
+            if (Modo == ModoForm.Alta)
+            {
+                Persona per = us.BuscaPersonaxNombApeEm(UsuarioActual.Nombre, UsuarioActual.Apellido, UsuarioActual.Email);
+                if (per.ID != 0 && per.Nombre != null)
+                {
+                    us.CargarIDPersona(UsuarioActual.Nombre, UsuarioActual.Apellido, UsuarioActual.Email, per.ID);
+                    us.Save(UsuarioActual);
+                }
+                else
+                {
+                    this.Notificar("Debe registrar la persona primero", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else if(Modo == ModoForm.Modicacion)
+            {
+
+                Usuario usuarioAnterior = us.GetOne(UsuarioActual.ID);
+                Persona per = us.BuscaPersonaxNombApeEm(usuarioAnterior.Nombre, usuarioAnterior.Apellido, usuarioAnterior.Email);
+                
+                us.ActualizarPersona(UsuarioActual.Nombre, UsuarioActual.Apellido, UsuarioActual.Email, per.ID);
+                
+                us.Save(UsuarioActual);
+            }
+            else
+            {
+                us.Save(UsuarioActual);
+            }
         }
 
+        
         public override bool Validar()
         {
              
@@ -156,9 +182,27 @@ namespace UI.Desktop
             
         }
 
+        public bool ValidarBorrado()
+        {
+            UsuarioLogic ul = new UsuarioLogic();
+            Persona per = ul.BuscaPersonaxNombApeEm(UsuarioActual.Nombre, UsuarioActual.Apellido, UsuarioActual.Email);
+            if(per.ID != 0 && per.Nombre !=null && per.Apellido != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             bool b = this.Validar();
+            
             if (b == true)
             {
                 this.GuardarCambios();

@@ -75,12 +75,14 @@ namespace UI.Desktop
 
         private void tsmPersonas_Click(object sender, EventArgs e)
         {
-
+            Personas per = new Personas(UsuarioID);
+            per.ShowDialog();
         }
 
         private void tsmCursos_Click(object sender, EventArgs e)
         {
-
+            Cursos cur = new Cursos(UsuarioID);
+            cur.ShowDialog();
         }
     }
 }

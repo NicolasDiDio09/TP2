@@ -112,7 +112,22 @@ namespace UI.Desktop
         {
             MapearADatos();
             MateriaLogic mt = new MateriaLogic();
-            mt.Save(MateriaActual);
+            if(Modo == ModoForm.Baja)
+            {
+                List<Curso> cursos = mt.BuscarCursos(MateriaActual.ID);
+                if(cursos.Count != 0)
+                {
+                    this.Notificar("Debe eliminar los cursos que dan esta materia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    mt.Save(MateriaActual);
+                }
+            }
+            else
+            {
+                mt.Save(MateriaActual);
+            }
         }
 
         public override bool Validar()
@@ -132,6 +147,7 @@ namespace UI.Desktop
                 this.Notificar("Por favor, rellenar los campos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
+            
 
         }
 

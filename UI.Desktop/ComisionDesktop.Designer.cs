@@ -32,14 +32,14 @@ namespace UI.Desktop
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtIdComision = new System.Windows.Forms.TextBox();
             this.txtDescripcionComision = new System.Windows.Forms.TextBox();
-            this.txtAnioEspecialidad = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtIdPlan = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.cbxAnioEspecialidad = new System.Windows.Forms.ComboBox();
+            this.cbxPlan = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,16 +48,16 @@ namespace UI.Desktop
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.cbxPlan, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtIdComision, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtDescripcionComision, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtAnioEspecialidad, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.txtIdPlan, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.cbxAnioEspecialidad, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -67,6 +67,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.57547F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.60693F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(403, 186);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -86,14 +87,6 @@ namespace UI.Desktop
             this.txtDescripcionComision.Name = "txtDescripcionComision";
             this.txtDescripcionComision.Size = new System.Drawing.Size(196, 23);
             this.txtDescripcionComision.TabIndex = 1;
-            // 
-            // txtAnioEspecialidad
-            // 
-            this.txtAnioEspecialidad.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtAnioEspecialidad.Location = new System.Drawing.Point(204, 85);
-            this.txtAnioEspecialidad.Name = "txtAnioEspecialidad";
-            this.txtAnioEspecialidad.Size = new System.Drawing.Size(196, 23);
-            this.txtAnioEspecialidad.TabIndex = 4;
             // 
             // label1
             // 
@@ -148,14 +141,6 @@ namespace UI.Desktop
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // txtIdPlan
-            // 
-            this.txtIdPlan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtIdPlan.Location = new System.Drawing.Point(204, 126);
-            this.txtIdPlan.Name = "txtIdPlan";
-            this.txtIdPlan.Size = new System.Drawing.Size(196, 23);
-            this.txtIdPlan.TabIndex = 8;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -166,6 +151,24 @@ namespace UI.Desktop
             this.label4.TabIndex = 9;
             this.label4.Text = "idPlan";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cbxAnioEspecialidad
+            // 
+            this.cbxAnioEspecialidad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxAnioEspecialidad.FormattingEnabled = true;
+            this.cbxAnioEspecialidad.Location = new System.Drawing.Point(204, 85);
+            this.cbxAnioEspecialidad.Name = "cbxAnioEspecialidad";
+            this.cbxAnioEspecialidad.Size = new System.Drawing.Size(196, 23);
+            this.cbxAnioEspecialidad.TabIndex = 10;
+            // 
+            // cbxPlan
+            // 
+            this.cbxPlan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxPlan.FormattingEnabled = true;
+            this.cbxPlan.Location = new System.Drawing.Point(204, 126);
+            this.cbxPlan.Name = "cbxPlan";
+            this.cbxPlan.Size = new System.Drawing.Size(196, 23);
+            this.cbxPlan.TabIndex = 11;
             // 
             // ComisionDesktop
             // 
@@ -190,11 +193,11 @@ namespace UI.Desktop
         private System.Windows.Forms.TextBox txtDescripcionComision;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.TextBox txtAnioEspecialidad;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtIdPlan;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbxPlan;
+        private System.Windows.Forms.ComboBox cbxAnioEspecialidad;
     }
 }

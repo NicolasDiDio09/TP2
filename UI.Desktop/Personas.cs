@@ -14,15 +14,39 @@ namespace UI.Desktop
 {
     public partial class Personas : Form
     {
+        public int UsuarioID { get; set; }
+        
         public Personas()
         {
             InitializeComponent();
             dgvPersonas.AutoGenerateColumns = false;
         }
 
+        public Personas(int id)
+        {
+            InitializeComponent();
+            dgvPersonas.AutoGenerateColumns = false;
+            UsuarioID = id;
+        }
+
         private void Personas_Load(object sender, EventArgs e)
         {
-            this.Listar();
+            this.Lista();
+        }
+
+        private void Lista()
+        {
+            UsuarioLogic ul = new UsuarioLogic();
+            Persona perso = ul.BuscaPersona(UsuarioID);
+
+            if (perso.TipoPersona.ToString() == "Admin")
+            {
+                this.Listar();
+            }
+            else
+            {
+                this.ListarUsuario();
+            }
         }
 
         public void Listar()
@@ -41,10 +65,28 @@ namespace UI.Desktop
             }
         }
 
+        public void ListarUsuario()
+        {
+            try
+            {
+                tsbAlta.Visible = false;
+                tsbBorrar.Visible = false;
+                UsuarioLogic pl = new UsuarioLogic();
+                List<Persona> persona = new List<Persona>();
+                persona.Add(pl.BuscaPersona(UsuarioID));
+                this.dgvPersonas.DataSource = persona;
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Error al recuperar la lista de personas");
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", fe);
+                throw ExcepcionManejada;
+            }
+        }
 
         private void btnActualizar_Click_1(object sender, EventArgs e)
         {
-            this.Listar();
+            this.Lista();
         }
 
         
@@ -53,7 +95,7 @@ namespace UI.Desktop
         {
             PersonaDesktop pd = new PersonaDesktop(ModoForm.Alta);
             pd.ShowDialog();
-            this.Listar();
+            this.Lista();
         }
 
         private void tsbEditar_Click_1(object sender, EventArgs e)
@@ -61,15 +103,15 @@ namespace UI.Desktop
             int id = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
             PersonaDesktop pd = new PersonaDesktop(id, ModoForm.Modicacion);
             pd.ShowDialog();
-            this.Listar();
+            this.Lista();
         }
 
         private void tsbBorrar_Click(object sender, EventArgs e)
         {
-            int id = ((Business.Entities.Usuario)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
+            int id = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
             PersonaDesktop pd = new PersonaDesktop(id, ModoForm.Baja);
             pd.ShowDialog();
-            this.Listar();
+            this.Lista();
         }
 
         private void btnSalir_Click_1(object sender, EventArgs e)

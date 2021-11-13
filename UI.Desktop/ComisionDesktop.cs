@@ -14,9 +14,15 @@ namespace UI.Desktop
 {
     public partial class ComisionDesktop : ApplicationForm
     {
+        public Comision ComisionActual { get; set; }
         public ComisionDesktop()
         {
             InitializeComponent();
+            cbxAnioEspecialidad.DataSource = Enum.GetValues(typeof(Business.Entities.Comision.Anios));
+            Business.Logic.PlanLogic pl = new PlanLogic();
+            cbxPlan.DataSource = pl.GetAll();
+            cbxPlan.DisplayMember = "DescPlan";
+            cbxPlan.ValueMember = "ID";
         }
         public ComisionDesktop(ModoForm modo) : this()
         {
@@ -32,13 +38,13 @@ namespace UI.Desktop
             ComisionActual = comi.GetOne(ID);
             MapearDeDatos();
         }
-        public Business.Entities.Comision ComisionActual { get; set; } //prop
+
         public override void MapearDeDatos()
         {
             this.txtIdComision.Text = this.ComisionActual.ID.ToString();
             this.txtDescripcionComision.Text = this.ComisionActual.DescComision.ToString();
-            this.txtAnioEspecialidad.Text = this.ComisionActual.AnioEspecialidad.ToString();
-            this.txtIdPlan.Text = this.ComisionActual.IdPlan.ToString();
+            cbxAnioEspecialidad.SelectedItem = this.ComisionActual.AnioEspecialidad;
+            cbxPlan.SelectedItem = this.ComisionActual.IdPlan;
 
             switch (Modo)
             {
@@ -71,8 +77,8 @@ namespace UI.Desktop
                     int id = 0;
                     this.ComisionActual.ID = id;
                     this.ComisionActual.DescComision = this.txtDescripcionComision.Text;
-                    this.ComisionActual.AnioEspecialidad = int.Parse(this.txtAnioEspecialidad.Text);
-                    this.ComisionActual.IdPlan= int.Parse(this.txtIdPlan.Text);
+                    this.ComisionActual.AnioEspecialidad = (Comision.Anios)(this.cbxAnioEspecialidad.SelectedValue); ;
+                    this.ComisionActual.IdPlan= int.Parse(cbxPlan.SelectedValue.ToString());
                     ComisionActual.State = Business.Entities.Comision.States.New;
                     break;
 
@@ -81,10 +87,9 @@ namespace UI.Desktop
                     Comision comi = new Comision();
                     ComisionActual = comi;
 
-                    this.ComisionActual.ID = int.Parse(this.txtIdComision.Text);
                     this.ComisionActual.DescComision = this.txtDescripcionComision.Text;
-                    this.ComisionActual.AnioEspecialidad = int.Parse(this.txtAnioEspecialidad.Text);
-                    this.ComisionActual.IdPlan = int.Parse(this.txtIdPlan.Text);
+                    this.ComisionActual.AnioEspecialidad = (Comision.Anios)(this.cbxAnioEspecialidad.SelectedValue); ;
+                    this.ComisionActual.IdPlan = int.Parse(cbxPlan.SelectedValue.ToString());
                     ComisionActual.State = Business.Entities.Comision.States.Modified;
                     break;
 
@@ -103,20 +108,33 @@ namespace UI.Desktop
         {
             MapearADatos();
             ComisionLogic comi = new ComisionLogic();
-            comi.Save(ComisionActual);
+            if(Modo == ModoForm.Baja)
+            {
+                List<Curso> cursos = comi.BuscarCursos(ComisionActual.ID);
+                if (cursos.Count != 0)
+                {
+                    this.Notificar("Debe eliminar los cursos que se dan en esta comision", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    comi.Save(ComisionActual);
+                }
+            }
+            else
+            {
+                comi.Save(ComisionActual);
+            }
+            
         }
         public override bool Validar()
         {
-            bool a1 = string.IsNullOrEmpty(this.txtAnioEspecialidad.Text.ToString());
 
             bool a2 = string.IsNullOrEmpty(this.txtDescripcionComision.Text);
             
 
-            if (a1 == false && a1 == false)
+            if ( a2 == false)
             {
-                
                     return true;
-                
             }
             else
             {
@@ -135,8 +153,6 @@ namespace UI.Desktop
                 this.Close();
             }
         }
-
-  
 
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {

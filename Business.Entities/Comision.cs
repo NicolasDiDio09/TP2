@@ -9,7 +9,7 @@ namespace Business.Entities
     public class Comision : BusinessEntity
     {
         private string _descComision;
-        private int _anioEspecialidad;
+        private Anios _anioEspecialidad;
 
         public string DescComision
         {
@@ -22,7 +22,7 @@ namespace Business.Entities
                 _descComision = value;
             }
         }
-        public int AnioEspecialidad
+        public Anios AnioEspecialidad
         {
             get
             {
@@ -35,7 +35,14 @@ namespace Business.Entities
         }
         public int IdPlan { get; set; }
 
-
-
+        public enum Anios
+        {
+            Primero=1,
+            Segundo=2,
+            Tercero=3,
+            Cuarto=4,
+            Quinto=5,
+            Sexto=6
+        }
     }
 }

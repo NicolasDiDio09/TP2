@@ -14,9 +14,18 @@ namespace UI.Desktop
 {
     public partial class CursoDesktop : ApplicationForm
     {
+        public Business.Entities.Curso CursoActual { get; set; }
         public CursoDesktop()
         {
             InitializeComponent();
+            MateriaLogic ml = new MateriaLogic();
+            cbxMateria.DataSource = ml.GetAll();
+            cbxMateria.DisplayMember = "DescMateria";
+            cbxMateria.ValueMember = "ID";
+            ComisionLogic cl = new ComisionLogic();
+            cbxComision.DataSource = cl.GetAll();
+            cbxComision.DisplayMember = "DescComision";
+            cbxComision.ValueMember = "ID";
         }
 
         public CursoDesktop(ModoForm modo) : this()
@@ -33,15 +42,15 @@ namespace UI.Desktop
             CursoActual = cur.GetOne(ID);
             MapearDeDatos();
         }
-        public Business.Entities.Curso CursoActual { get; set; }
+        
 
         public override void MapearDeDatos()
         {
             this.txtIdCurso.Text = this.CursoActual.ID.ToString();
             this.txtAnio.Text = this.CursoActual.AnioCalendario.ToString();
             this.txtCupo.Text = this.CursoActual.Cupo.ToString();
-            this.txtidMateria.Text = this.CursoActual.IDMateria.ToString();
-            this.txtIdComision.Text = this.CursoActual.IDComision.ToString();
+            cbxMateria.SelectedValue = this.CursoActual.IDMateria;
+            cbxComision.SelectedValue = this.CursoActual.IDComision;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -75,8 +84,8 @@ namespace UI.Desktop
                     this.CursoActual.ID = id;
                     this.CursoActual.AnioCalendario = int.Parse(this.txtAnio.Text);
                     this.CursoActual.Cupo = int.Parse(this.txtCupo.Text);
-                    this.CursoActual.IDComision = int.Parse(this.txtIdComision.Text);
-                    this.CursoActual.IDMateria = int.Parse(this.txtidMateria.Text);
+                    this.CursoActual.IDComision = int.Parse(cbxComision.SelectedValue.ToString());
+                    this.CursoActual.IDMateria = int.Parse(cbxMateria.SelectedValue.ToString());
                     CursoActual.State = BusinessEntity.States.New;
                     break;
 
@@ -85,10 +94,10 @@ namespace UI.Desktop
                     Curso Uss = new Curso();
                     CursoActual = Uss;
                     this.CursoActual.ID = int.Parse(this.txtIdCurso.Text);
-                    this.CursoActual.Cupo = int.Parse(this.txtCupo.Text);
                     this.CursoActual.AnioCalendario = int.Parse(this.txtAnio.Text);
-                    this.CursoActual.IDComision = int.Parse(this.txtIdComision.Text);
-                    this.CursoActual.IDMateria = int.Parse(this.txtidMateria.Text);
+                    this.CursoActual.Cupo = int.Parse(this.txtCupo.Text);
+                    this.CursoActual.IDComision = int.Parse(cbxComision.SelectedValue.ToString());
+                    this.CursoActual.IDMateria = int.Parse(cbxMateria.SelectedValue.ToString());
                     CursoActual.State = BusinessEntity.States.Modified;
                     break;
 
@@ -108,7 +117,24 @@ namespace UI.Desktop
         {
             MapearADatos();
             CursoLogic cu = new CursoLogic();
-            cu.Save(CursoActual);
+            
+            if(Modo == ModoForm.Baja)
+            {
+                List<Business.Entities.DocenteCurso> dcs = cu.BuscaDocentesCurso(CursoActual.ID);
+
+                if(dcs.Count != 0)
+                {
+                    this.Notificar("Debe eliminar la relacion que tiene este curso con el docente que lo da", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    cu.Save(CursoActual);
+                }
+            }
+            else
+            {
+                cu.Save(CursoActual);
+            }
         }
 
         public override bool Validar()
@@ -116,10 +142,8 @@ namespace UI.Desktop
 
             bool b3 = string.IsNullOrEmpty(this.txtAnio.Text);
             bool b4 = string.IsNullOrEmpty(this.txtCupo.Text);
-            bool b5 = string.IsNullOrEmpty(this.txtIdComision.Text);
-            bool b6 = string.IsNullOrEmpty(this.txtidMateria.Text);
 
-            if (b3 == false && b4 == false && b5 == false && b6 == false)
+            if (b3 == false && b4 == false)
             {
                 return true;
             }

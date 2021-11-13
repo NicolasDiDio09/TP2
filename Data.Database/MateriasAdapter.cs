@@ -11,7 +11,8 @@ namespace Data.Database
 {
     public class MateriasAdapter : Adapter
     {
-
+        
+        
         public List<Materia> GetAll()
         {
             List<Materia> materias = new List<Materia>();
@@ -177,7 +178,7 @@ namespace Data.Database
                     Comision comi = new Comision();
                     comi.ID = (int)drComision["id_comision"];
                     comi.DescComision = (string)drComision["desc_comision"];
-                    comi.AnioEspecialidad = (int)drComision["anio_especialidad"];
+                    comi.AnioEspecialidad = (Comision.Anios)drComision["anio_especialidad"];
                     comi.IdPlan = (int)drComision["id_plan"];
                     comisions.Add(comi);
                 }
@@ -194,5 +195,42 @@ namespace Data.Database
             }
             return comisions;
         }
+
+        public List<Curso> BuscarCursos(int idMateria)
+        {
+            List<Curso> cursos = new List<Curso>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdBuscaCursos = new SqlCommand(
+                    "select * from materias m " +
+                    "inner join cursos c on m.id_materia=c.id_materia " +
+                    "where m.id_materia=@id;", sqlConn);
+                cmdBuscaCursos.Parameters.Add("@id", SqlDbType.Int).Value = idMateria;
+                SqlDataReader drCursos = cmdBuscaCursos.ExecuteReader();
+                if (drCursos.Read())
+                {
+                    Curso cur = new Curso();
+                    cur.ID = (int)drCursos["id_curso"];
+                    cur.IDMateria = (int)drCursos["id_materia"];
+                    cur.IDComision = (int)drCursos["id_comision"];
+                    cur.AnioCalendario = (int)drCursos["anio_calendario"];
+                    cur.Cupo = (int)drCursos["cupo"];
+                    cursos.Add(cur);
+                }
+                drCursos.Close();
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de la materia", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return cursos;
+        }
     }
+
 }

@@ -178,7 +178,7 @@ namespace UI.Desktop
 
         }
 
-        public void GuardarCambios()
+        public override void GuardarCambios()
         {
             MapearADatos();
             DocenteCursoLogic dcl = new DocenteCursoLogic();

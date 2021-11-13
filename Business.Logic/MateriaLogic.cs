@@ -47,5 +47,10 @@ namespace Business.Logic
         {
             return MateriaData.buscarComisiones(idMateria);
         }
+
+        public List<Curso> BuscarCursos(int idMateria)
+        {
+            return MateriaData.BuscarCursos(idMateria);
+        }
     }
 }

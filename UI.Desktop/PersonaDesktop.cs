@@ -152,11 +152,36 @@ namespace UI.Desktop
 
         }
 
-        public void GuardarCambios()
+        public override void GuardarCambios()
         {
             MapearADatos();
             PersonaLogic datosPersonas = new PersonaLogic();
-            datosPersonas.Save(PersonaActual);
+            if (Modo == ModoForm.Baja)
+            {
+                Usuario user = datosPersonas.BuscaUsuarioxNombApeEm(PersonaActual.Nombre, PersonaActual.Apellido, PersonaActual.Email);
+                if(user.ID != 0 && user.Nombre != null)
+                {
+                    this.Notificar("Debe eliminar el usuario antes de borrar la persona", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    datosPersonas.Save(PersonaActual);
+                }
+            }
+            else if(Modo == ModoForm.Modicacion)
+            {
+                Persona personaAnterior = datosPersonas.GetOne(PersonaActual.ID);
+
+                Usuario user = datosPersonas.BuscaUsuarioxNombApeEm(personaAnterior.Nombre, personaAnterior.Apellido, personaAnterior.Email);
+
+                datosPersonas.ActualizarUsuario(PersonaActual.Nombre, PersonaActual.Apellido, PersonaActual.Email, user.ID);
+
+                datosPersonas.Save(PersonaActual);
+            }
+            else
+            {
+                datosPersonas.Save(PersonaActual);
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

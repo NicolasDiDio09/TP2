@@ -221,11 +221,71 @@ namespace Data.Database
             finally
             {
                 this.CloseConnection();
-
             }
-
             return profes;
         }
 
+        public Usuario BuscaUsuarioxNombApeEm(string nombre, string apellido, string mail)
+        {
+            Usuario user = new Usuario();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdBusca = new SqlCommand(
+                    "select * from usuarios " +
+                    "where nombre=@nombre and " +
+                    "apellido = @apellido and " +
+                    "email=@email; ", sqlConn);
+                cmdBusca.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = nombre;
+                cmdBusca.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = apellido;
+                cmdBusca.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = mail;
+                SqlDataReader drUsuario = cmdBusca.ExecuteReader();
+                if (drUsuario.Read())
+                {
+                    user.ID = (int)drUsuario["id_usuario"];
+                    user.NombreUsuario = (string)drUsuario["nombre_usuario"];
+                    user.Clave = (string)drUsuario["clave"];
+                    user.Habilitado = (bool)drUsuario["habilitado"];
+                    user.Nombre = (string)drUsuario["nombre"];
+                    user.Apellido = (string)drUsuario["apellido"];
+                    user.Email = (string)drUsuario["email"];
+                }
+                drUsuario.Close();
+            }
+            catch (Exception e)
+            {
+                Exception er = new Exception("Error al encontrar el usuario", e);
+                throw er;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return user;
+        }
+        public void ActualizarUsuario(string nombrePersona, string apellidoPersona, string emailPersona, int idUsuario)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdSave = new SqlCommand(
+                    "UPDATE usuarios SET nombre=@nombre, apellido=@apellido, email=@email " +
+                    "where id_usuario=@id", sqlConn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = idUsuario;
+                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = nombrePersona;
+                cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = apellidoPersona;
+                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = emailPersona;
+                cmdSave.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Exception er = new Exception("Error al actualizar los datos de usuario", e);
+                throw er;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+        }
     }
 }

@@ -166,7 +166,7 @@ namespace UI.Desktop
             // 
             // tipo_persona
             // 
-            this.tipo_persona.DataPropertyName = "Tipo_persona";
+            this.tipo_persona.DataPropertyName = "TipoPersona";
             this.tipo_persona.HeaderText = "Tipo persona";
             this.tipo_persona.Name = "tipo_persona";
             // 

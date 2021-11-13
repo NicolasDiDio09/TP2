@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Business.Logic;
+using Business.Entities;
 
 namespace Business.Logic
 {
@@ -51,6 +53,16 @@ namespace Business.Logic
         public List<Business.Entities.Persona> RecuperarPorfesores()
         {
             return PersonaData.RecuperarProfesores();
+        }
+
+        public Usuario BuscaUsuarioxNombApeEm(string nombre, string apellido, string mail)
+        {
+            return PersonaData.BuscaUsuarioxNombApeEm(nombre, apellido, mail);
+        }
+
+        public void ActualizarUsuario(string nombrePersona, string apellidoPersona, string emailPersona, int idPersona)
+        {
+            PersonaData.ActualizarUsuario(nombrePersona, apellidoPersona, emailPersona, idPersona);
         }
     }
 }
