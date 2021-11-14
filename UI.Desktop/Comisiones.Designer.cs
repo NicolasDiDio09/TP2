@@ -99,6 +99,7 @@ namespace UI.Desktop
             this.dgvComisiones.Location = new System.Drawing.Point(3, 3);
             this.dgvComisiones.MultiSelect = false;
             this.dgvComisiones.Name = "dgvComisiones";
+            this.dgvComisiones.ReadOnly = true;
             this.dgvComisiones.RowTemplate.Height = 25;
             this.dgvComisiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvComisiones.Size = new System.Drawing.Size(794, 351);
@@ -109,24 +110,28 @@ namespace UI.Desktop
             this.idComision.DataPropertyName = "ID";
             this.idComision.HeaderText = "idComision";
             this.idComision.Name = "idComision";
+            this.idComision.ReadOnly = true;
             // 
             // descComision
             // 
             this.descComision.DataPropertyName = "DescComision";
             this.descComision.HeaderText = "descComision";
             this.descComision.Name = "descComision";
+            this.descComision.ReadOnly = true;
             // 
             // añoEspecialidad
             // 
             this.añoEspecialidad.DataPropertyName = "AnioEspecialidad";
             this.añoEspecialidad.HeaderText = "añoEspecialidad";
             this.añoEspecialidad.Name = "añoEspecialidad";
+            this.añoEspecialidad.ReadOnly = true;
             // 
             // idPlan
             // 
             this.idPlan.DataPropertyName = "IdPlan";
             this.idPlan.HeaderText = "idPlan";
             this.idPlan.Name = "idPlan";
+            this.idPlan.ReadOnly = true;
             // 
             // btnCancelar
             // 
@@ -159,7 +164,7 @@ namespace UI.Desktop
             this.tsbEliminar});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(112, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(81, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // tsbNuevo

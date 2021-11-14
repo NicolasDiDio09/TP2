@@ -30,6 +30,7 @@ namespace UI.Desktop
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cbxPlan = new System.Windows.Forms.ComboBox();
             this.txtIdComision = new System.Windows.Forms.TextBox();
             this.txtDescripcionComision = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@ namespace UI.Desktop
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cbxAnioEspecialidad = new System.Windows.Forms.ComboBox();
-            this.cbxPlan = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +70,15 @@ namespace UI.Desktop
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(403, 186);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // cbxPlan
+            // 
+            this.cbxPlan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxPlan.FormattingEnabled = true;
+            this.cbxPlan.Location = new System.Drawing.Point(204, 126);
+            this.cbxPlan.Name = "cbxPlan";
+            this.cbxPlan.Size = new System.Drawing.Size(196, 23);
+            this.cbxPlan.TabIndex = 11;
             // 
             // txtIdComision
             // 
@@ -160,15 +169,6 @@ namespace UI.Desktop
             this.cbxAnioEspecialidad.Name = "cbxAnioEspecialidad";
             this.cbxAnioEspecialidad.Size = new System.Drawing.Size(196, 23);
             this.cbxAnioEspecialidad.TabIndex = 10;
-            // 
-            // cbxPlan
-            // 
-            this.cbxPlan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxPlan.FormattingEnabled = true;
-            this.cbxPlan.Location = new System.Drawing.Point(204, 126);
-            this.cbxPlan.Name = "cbxPlan";
-            this.cbxPlan.Size = new System.Drawing.Size(196, 23);
-            this.cbxPlan.TabIndex = 11;
             // 
             // ComisionDesktop
             // 

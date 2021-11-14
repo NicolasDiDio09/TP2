@@ -161,12 +161,12 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
                 "insert into cursos(anio_calendario, cupo, id_materia, id_comision) " +
-                "Values(@anio_calendario, @cupo, @id_materia, @id_comision) " +
-                "selected @@identity", sqlConn);
+                "Values(@anio_calendario, @cupo, @id_materia, @id_comision) ", sqlConn);
                 cmdSave.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = curso.AnioCalendario;
                 cmdSave.Parameters.Add("@cupo", SqlDbType.Int).Value = curso.Cupo;
                 cmdSave.Parameters.Add("@id_materia", SqlDbType.Int).Value = curso.IDMateria;
                 cmdSave.Parameters.Add("@id_comision", SqlDbType.Int).Value = curso.IDComision;
+                cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {

@@ -111,6 +111,7 @@ namespace UI.Desktop
             this.dgvPersonas.Location = new System.Drawing.Point(3, 3);
             this.dgvPersonas.MultiSelect = false;
             this.dgvPersonas.Name = "dgvPersonas";
+            this.dgvPersonas.ReadOnly = true;
             this.dgvPersonas.RowTemplate.Height = 25;
             this.dgvPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersonas.Size = new System.Drawing.Size(1045, 390);
@@ -121,60 +122,70 @@ namespace UI.Desktop
             this.id_persona.DataPropertyName = "ID";
             this.id_persona.HeaderText = "ID";
             this.id_persona.Name = "id_persona";
+            this.id_persona.ReadOnly = true;
             // 
             // nombre
             // 
             this.nombre.DataPropertyName = "Nombre";
             this.nombre.HeaderText = "Nombre";
             this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
             // 
             // apellido
             // 
             this.apellido.DataPropertyName = "Apellido";
             this.apellido.HeaderText = "Apellido";
             this.apellido.Name = "apellido";
+            this.apellido.ReadOnly = true;
             // 
             // direccion
             // 
             this.direccion.DataPropertyName = "Direccion";
             this.direccion.HeaderText = "Direccion";
             this.direccion.Name = "direccion";
+            this.direccion.ReadOnly = true;
             // 
             // email
             // 
             this.email.DataPropertyName = "Email";
             this.email.HeaderText = "Email";
             this.email.Name = "email";
+            this.email.ReadOnly = true;
             // 
             // telefono
             // 
             this.telefono.DataPropertyName = "Telefono";
             this.telefono.HeaderText = "Telefono";
             this.telefono.Name = "telefono";
+            this.telefono.ReadOnly = true;
             // 
             // fecha_nac
             // 
             this.fecha_nac.DataPropertyName = "Fecha_nac";
             this.fecha_nac.HeaderText = "Fecha de nacimiento";
             this.fecha_nac.Name = "fecha_nac";
+            this.fecha_nac.ReadOnly = true;
             // 
             // legajo
             // 
             this.legajo.DataPropertyName = "Legajo";
             this.legajo.HeaderText = "Legajo";
             this.legajo.Name = "legajo";
+            this.legajo.ReadOnly = true;
             // 
             // tipo_persona
             // 
             this.tipo_persona.DataPropertyName = "TipoPersona";
             this.tipo_persona.HeaderText = "Tipo persona";
             this.tipo_persona.Name = "tipo_persona";
+            this.tipo_persona.ReadOnly = true;
             // 
             // id_plan
             // 
             this.id_plan.DataPropertyName = "IDPlan";
             this.id_plan.HeaderText = "ID Plan";
             this.id_plan.Name = "id_plan";
+            this.id_plan.ReadOnly = true;
             // 
             // btnActualizar
             // 
@@ -206,7 +217,7 @@ namespace UI.Desktop
             this.tsbBorrar});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(112, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(81, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // tsbAlta

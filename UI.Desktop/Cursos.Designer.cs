@@ -168,6 +168,7 @@ namespace UI.Desktop
             this.dgvCursos.Location = new System.Drawing.Point(3, 3);
             this.dgvCursos.MultiSelect = false;
             this.dgvCursos.Name = "dgvCursos";
+            this.dgvCursos.ReadOnly = true;
             this.dgvCursos.RowTemplate.Height = 25;
             this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCursos.Size = new System.Drawing.Size(540, 277);
@@ -178,30 +179,35 @@ namespace UI.Desktop
             this.idCurso.DataPropertyName = "ID";
             this.idCurso.HeaderText = "Curso ID";
             this.idCurso.Name = "idCurso";
+            this.idCurso.ReadOnly = true;
             // 
             // idMateria
             // 
             this.idMateria.DataPropertyName = "IDMateria";
             this.idMateria.HeaderText = "Materia ID";
             this.idMateria.Name = "idMateria";
+            this.idMateria.ReadOnly = true;
             // 
             // idComision
             // 
             this.idComision.DataPropertyName = "IDComision";
             this.idComision.HeaderText = "Comision ID";
             this.idComision.Name = "idComision";
+            this.idComision.ReadOnly = true;
             // 
             // anioCalendario
             // 
             this.anioCalendario.DataPropertyName = "AnioCalendario";
             this.anioCalendario.HeaderText = "Año Calendario";
             this.anioCalendario.Name = "anioCalendario";
+            this.anioCalendario.ReadOnly = true;
             // 
             // cupo
             // 
             this.cupo.DataPropertyName = "Cupo";
             this.cupo.HeaderText = "Cupo";
             this.cupo.Name = "cupo";
+            this.cupo.ReadOnly = true;
             // 
             // Cursos
             // 

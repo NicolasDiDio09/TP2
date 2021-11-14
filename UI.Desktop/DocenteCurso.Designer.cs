@@ -99,6 +99,7 @@ namespace UI.Desktop
             this.dgvDocenteCurso.Location = new System.Drawing.Point(3, 3);
             this.dgvDocenteCurso.MultiSelect = false;
             this.dgvDocenteCurso.Name = "dgvDocenteCurso";
+            this.dgvDocenteCurso.ReadOnly = true;
             this.dgvDocenteCurso.RowTemplate.Height = 25;
             this.dgvDocenteCurso.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDocenteCurso.Size = new System.Drawing.Size(444, 194);
@@ -109,24 +110,28 @@ namespace UI.Desktop
             this.id_dictado.DataPropertyName = "ID";
             this.id_dictado.HeaderText = "ID Dictado";
             this.id_dictado.Name = "id_dictado";
+            this.id_dictado.ReadOnly = true;
             // 
             // docente_nombre
             // 
             this.docente_nombre.DataPropertyName = "IDDocente";
             this.docente_nombre.HeaderText = "Docente";
             this.docente_nombre.Name = "docente_nombre";
+            this.docente_nombre.ReadOnly = true;
             // 
             // curso
             // 
             this.curso.DataPropertyName = "IDCurso";
             this.curso.HeaderText = "Curso";
             this.curso.Name = "curso";
+            this.curso.ReadOnly = true;
             // 
             // cargo
             // 
             this.cargo.DataPropertyName = "Cargo";
             this.cargo.HeaderText = "Cargo";
             this.cargo.Name = "cargo";
+            this.cargo.ReadOnly = true;
             // 
             // btnSalir
             // 
