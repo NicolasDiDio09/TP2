@@ -182,7 +182,21 @@ namespace UI.Desktop
         {
             MapearADatos();
             DocenteCursoLogic dcl = new DocenteCursoLogic();
-            dcl.Save(DocenteCursoActual);
+            if (Modo == ModoForm.Alta)
+            {
+                if (DocenteCursoActual.IDCurso != 0)
+                {
+                    dcl.Save(DocenteCursoActual);
+                }
+                else
+                {
+                    this.Notificar("No se encontro el curso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                dcl.Save(DocenteCursoActual);
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
