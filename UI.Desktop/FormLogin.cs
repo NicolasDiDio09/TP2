@@ -22,7 +22,7 @@ namespace UI.Desktop
             InitializeComponent();
         }
 
-        public int UsurioID { get; set; }
+        public int UsuarioID { get; set; }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -52,7 +52,7 @@ namespace UI.Desktop
             {
                 if(usuario.Clave == txtPass.Text)
                 {
-                    UsurioID = usuario.ID;
+                    UsuarioID = usuario.ID;
                     this.DialogResult = DialogResult.OK;
                 }
                 else

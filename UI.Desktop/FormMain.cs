@@ -34,7 +34,7 @@ namespace UI.Desktop
             {
                 this.Dispose();
             }
-            UsuarioID = appLogin.UsurioID;
+            UsuarioID = appLogin.UsuarioID;
             UsuarioLogic ul = new UsuarioLogic();
             Persona per = ul.BuscaPersona(UsuarioID);
             if(per.TipoPersona.ToString() != "Admin")

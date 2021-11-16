@@ -97,6 +97,7 @@ namespace Business.Entities
                 _legajo = value;
             }
         }
+     
         public tipoPersonas TipoPersona
         {
             get
@@ -108,12 +109,14 @@ namespace Business.Entities
                 _tipoPersona = value;
             }
         }
-        public int IDPlan { get; set; }
+        
         public enum tipoPersonas
         {
             Admin = 1,
             Docente = 2,
             Alumno = 3
         }
+
+        public int IDPlan { get; set; }
     }
 }
